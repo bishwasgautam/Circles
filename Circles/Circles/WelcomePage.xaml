@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Circles.WelcomePage"
+             Title="Welcome to Circles!!">
+  <StackLayout>
+    
+    <Entry>
+
+      <Label x:Name="WelcomeTextLbl" Text="Hello, Welcome To Circles!" VerticalOptions="Center" HorizontalOptions="Center" />    
+      
+      <Button x:Name="ShowAddressBook" Clicked="ShowAddressBook_OnClicked"></Button>
+      
+    </Entry>
+    
+    <!--TODO Custom list view with edit and remove-->
+    <ListView x:Name ="AddressBookListView" HasUnevenRows="True">
+      <DataTemplate>
+        <ViewCell>
+        <Grid BackgroundColor="White" HeightRequest="8">
+          <StackLayout Orientation="Vertical" Padding="10" BackgroundColor="Gray">
+            <Label Text="{Binding AddressName}"></Label>
+            
+            
+          </StackLayout>
+          
+        </Grid>  
+          
+        </ViewCell>
+        
+      </DataTemplate>
+     <!--<ListViewCachingStrategy Values ></ListViewCachingStrategy>-->
+      
+      
+      
+    </ListView>
+    
+  </StackLayout>
+  
+  
+  
+</ContentPage>

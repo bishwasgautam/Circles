@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Circles.LoginPage"
+             Title="Please login">
+  
+  <Label Text="Welcome, man, welcome!" VerticalOptions="Center" HorizontalOptions="Center" />
+
+  <StackLayout Orientation="Vertical">
+
+    <Entry x:Name="MainEntry">
+      <TextCell x:Name="UserNameTextCell" Text="UserName"></TextCell>
+    </Entry>
+    
+    <Entry>
+      <TextCell x:Name="PasswordTextCell" Text="Password"></TextCell>  
+    </Entry>
+    
+    
+      <Button x:Name="LoginBtn" Clicked="LoginClicked" Text="Login"></Button>
+      <Button x:Name="ForgotItBtn" Clicked="ForgotItClicked" Text="Forgot It"></Button>
+    
+
+  </StackLayout>
+</ContentPage>
