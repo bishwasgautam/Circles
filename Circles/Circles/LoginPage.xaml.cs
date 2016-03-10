@@ -16,8 +16,8 @@ namespace Circles
 
         private async void LoginClicked(object sender, EventArgs e)
         {
-            var username = UserNameTextCell.Text;
-            var password = PasswordTextCell.Text;
+            var username = UserNameEntry.Text;
+            var password = PasswordEntry.Text;
 
             var userId = _userService.Authenticate(username, password);
             if (!userId.Equals(new Guid(string.Empty)))
@@ -28,17 +28,14 @@ namespace Circles
                 
                 //Forward to welcome page
                 await Navigation.PushAsync(new WelcomePage(user));
-
-
-
-
             }
         }
 
         private void ForgotItClicked(object sender, EventArgs e)
         {
-            //var username = UserNameTextCell.Text;
-            //var pasword = PasswordTextCell.Text;
+            //var username = UserNameEntry.Text;
+            //var password = PasswordEntry.Text;
+
         }
     }
 }

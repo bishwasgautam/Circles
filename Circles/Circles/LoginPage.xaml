@@ -2,23 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Circles.LoginPage"
-             Title="Please login">
+             Title="Please login"
+             BackgroundColor="White">
   
-  <Label Text="Welcome, man, welcome!" VerticalOptions="Center" HorizontalOptions="Center" />
+  <Label Text="Please login to get started!" VerticalOptions="Start" HorizontalOptions="Start" TextColor="Navy" FontAttributes="Bold"/>
 
-  <StackLayout Orientation="Vertical">
+  <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="400">
 
-    <Entry x:Name="MainEntry">
-      <TextCell x:Name="UserNameTextCell" Text="UserName"></TextCell>
-    </Entry>
+    <Image Source="dunnlogo.png" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200"/>
     
-    <Entry>
-      <TextCell x:Name="PasswordTextCell" Text="Password"></TextCell>  
-    </Entry>
-    
-    
-      <Button x:Name="LoginBtn" Clicked="LoginClicked" Text="Login"></Button>
-      <Button x:Name="ForgotItBtn" Clicked="ForgotItClicked" Text="Forgot It"></Button>
+    <Entry x:Name="UserNameEntry" HorizontalOptions="Center" BackgroundColor="White" PlaceholderColor="Gray" Placeholder="Username or Email"  TextColor="Navy" Keyboard="Email"/>
+    <Entry x:Name="PasswordEntry" IsPassword="True" HorizontalOptions="Center" BackgroundColor="White" Placeholder="Password" PlaceholderColor="Gray" TextColor="Navy" Keyboard="Default"/>
+  
+      <Button x:Name="LoginBtn" Clicked="LoginClicked" Text="Login" HorizontalOptions="CenterAndExpand" BackgroundColor="Teal" TextColor="White"></Button>
+      <Button x:Name="ForgotItBtn" Clicked="ForgotItClicked" Text="Forgot it" HorizontalOptions="CenterAndExpand" BackgroundColor="Teal" TextColor="White"></Button>
     
 
   </StackLayout>
