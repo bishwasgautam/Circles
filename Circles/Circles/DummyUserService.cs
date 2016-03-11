@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Circles.Entitites;
 
-namespace Circles.DataService
+using Circles.Entities;
+
+namespace Circles
 {
     public class DummyUserService: IUserService
     {
@@ -14,7 +15,7 @@ namespace Circles.DataService
                 FirstName = "Bishwas",
                 LastName = "Gautam",
                 AccessLevel = AccessLevel.Admin,
-                Address = GetAddressBook(new Guid()).First(),
+                AddressBook  = GetAddressBook(Guid.NewGuid()),
                 PrimaryEmail = "bgautam@dunnsolutions.com",
                 Phone = new PhoneInfo() {CellPhone = "224-420-2609"},
                 UserName = "bishwasgautam",
@@ -24,7 +25,7 @@ namespace Circles.DataService
 
         public Guid Authenticate(string userName, string passWord)
         {
-           return new Guid("circles__userGuid*");
+           return Guid.NewGuid();
         }
 
         public void ForgotLogin(string email, Guid userId)
@@ -45,7 +46,7 @@ namespace Circles.DataService
                {
                    FirstName ="Bishwas", LastName ="Gautam",
                    AccessLevel = AccessLevel.Admin,
-                   Address = GetAddressBook(new Guid()).First(),
+                   Address = GetAddressBook(new Guid()).First().Address,
                    PrimaryEmail = "bgautam@dunnsolutions.com",
                    Phone = new PhoneInfo() { CellPhone = "224-420-2609"},
                    UserName = "bishwasgautam", Password = "circles101"
@@ -55,13 +56,13 @@ namespace Circles.DataService
            };
         }
 
-        public List<Address> GetAddressBook(Guid userId)
+        public List<AddressBook> GetAddressBook(Guid userId)
         {
-           return new List<Address>()
+           return new List<AddressBook>()
            {
-               new Address() { StreetName ="741 Mulford St", Suite = "APT GS", City = "Evanston", State = "IL", ZipCode = "60202", Country = "USA"},
-               new Address() { StreetName ="751 Mulford St", Suite = "APT NS", City = "Evanston", State = "IL",  ZipCode = "60201",Country = "USA"},
-               new Address() { StreetName ="761 Mulford St", Suite = "APT 1", City = "Evanston", State = "IL", ZipCode = "60203", Country = "USA"},
+               new AddressBook() {AddressName = "hola nola", Address = new Address() { StreetName ="741 Mulford St", Suite = "APT GS", City = "Evanston", State = "IL", ZipCode = "60202", Country = "USA"}},
+               new AddressBook() {AddressName = "porfabor ", Address = new Address() { StreetName ="751 Mulford St", Suite = "APT NS", City = "Evanston", State = "IL",  ZipCode = "60201",Country = "USA"}},
+               new AddressBook() {AddressName = "cinko de mayo", Address = new Address() { StreetName ="761 Mulford St", Suite = "APT 1", City = "Evanston", State = "IL", ZipCode = "60203", Country = "USA"}}
            };
         }
 

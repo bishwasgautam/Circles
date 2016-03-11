@@ -5,13 +5,13 @@
              Title="Welcome to Circles!!">
   <StackLayout>
     
-    <Entry>
+   
 
-      <Label x:Name="WelcomeTextLbl" Text="Hello, Welcome To Circles!" VerticalOptions="Center" HorizontalOptions="Center" />    
+      <Label x:Name="WelcomeTextLbl" Text="Hello, Welcome To Circles!" TextColor="Red" VerticalOptions="Center" HorizontalOptions="Center" />    
       
       <Button x:Name="ShowAddressBook" Clicked="ShowAddressBook_OnClicked"></Button>
       
-    </Entry>
+    
     
     <!--TODO Custom list view with edit and remove-->
     <ListView x:Name ="AddressBookListView" HasUnevenRows="True">
@@ -20,7 +20,6 @@
         <Grid BackgroundColor="White" HeightRequest="8">
           <StackLayout Orientation="Vertical" Padding="10" BackgroundColor="Gray">
             <Label Text="{Binding AddressName}"></Label>
-            
             
           </StackLayout>
           

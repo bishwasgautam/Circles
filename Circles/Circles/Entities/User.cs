@@ -1,8 +1,9 @@
-﻿using System;
+﻿//TODO : Add annotations for data validation
+
+using System;
 using System.Collections.Generic;
 
-//TODO : Add annotations for data validation
-namespace Circles.Entitites
+namespace Circles.Entities
 {
     public class User
     {

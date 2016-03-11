@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Circles.Entitites;
+using Circles.Entities;
 
-namespace Circles.DataService
+namespace Circles
 {
     interface IUserService
     {
@@ -13,7 +13,7 @@ namespace Circles.DataService
         void ForgotLogin(string email, Guid userId);
 
         List<User> GetCirclesByUserId(Guid id);
-        List<Address> GetAddressBook(Guid userId);
+        List<AddressBook> GetAddressBook(Guid userId);
 
         bool AddToCircle(User user);
         bool AddToCircle(Guid userId);

@@ -1,4 +1,4 @@
-﻿namespace Circles.Entitites
+﻿namespace Circles.Entities
 {
     public class PhoneInfo
     {

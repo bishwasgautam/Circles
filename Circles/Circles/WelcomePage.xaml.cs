@@ -1,6 +1,5 @@
 ﻿using System;
-using Circles.DataService;
-using Circles.Entitites;
+using Circles.Entities;
 using Xamarin.Forms;
 
 namespace Circles

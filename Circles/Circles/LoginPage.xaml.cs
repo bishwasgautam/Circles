@@ -1,5 +1,5 @@
 ﻿using System;
-using Circles.DataService;
+
 using Xamarin.Forms;
 
 namespace Circles
@@ -20,7 +20,7 @@ namespace Circles
             var password = PasswordEntry.Text;
 
             var userId = _userService.Authenticate(username, password);
-            if (!userId.Equals(new Guid(string.Empty)))
+            if (userId != Guid.Empty)
             {
                 var user = _userService.GetUser(userId);
 
