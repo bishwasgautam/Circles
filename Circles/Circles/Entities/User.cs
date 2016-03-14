@@ -3,9 +3,10 @@
 using System;
 using System.Collections.Generic;
 
+
 namespace Circles.Entities
 {
-    public class User
+    public class User 
     {
         public Guid Id { get; set; }
 
@@ -18,18 +19,22 @@ namespace Circles.Entities
 
         public AccessLevel AccessLevel { get; set; }
 
-        public PhoneInfo Phone { get; set; }
+        public string PhoneInfoId { get; set; }
+        //[ForeignKey("PhoneInfoId")]
+        public virtual PhoneInfo Phone { get; set; }
 
-        public Address Address { get; set; }
+        public string AddressId { get; set; }
+        public virtual  Address Address { get; set; }
+
         //Lazy load this
-        public List<AddressBook> AddressBook { get; set; }
+        public virtual IEnumerable<AddressBook> AddressBook { get; set; }
         
         public DateTime BirthDate { get; set; }
         public int Age => (int)Math.Floor((decimal)(DateTime.Now.Year - BirthDate.Year));
         
 
         //<TODO> Lazy Loading 
-        public IList<User> Circle { get; set; }
+        public virtual IEnumerable<User> Circle { get; set; }
 
         public override string ToString()
         {
@@ -41,8 +46,12 @@ namespace Circles.Entities
     public class AddressBook
     {
         public string AddressName { get; set; }
+
+        public string UserId { get; set; }
         public virtual User User { get; set; }
-        public Address Address { get; set; }
+
+        public string AddressId { get; set; }
+        public virtual Address Address { get; set; }
     }
 
     public enum AccessLevel

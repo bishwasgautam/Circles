@@ -9,7 +9,7 @@
 
   <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="400">
 
-    <Image Source="dunnlogo.png" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="100"/>
+    <Image Source="dunnlogo.png" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200"/>
     
     <Entry x:Name="UserNameEntry" HorizontalOptions="Center" BackgroundColor="White" PlaceholderColor="Gray" Placeholder="Username or Email"  TextColor="Navy" Keyboard="Email"/>
     <Entry x:Name="PasswordEntry" IsPassword="True" HorizontalOptions="Center" BackgroundColor="White" Placeholder="Password" PlaceholderColor="Gray" TextColor="Navy" Keyboard="Default"/>

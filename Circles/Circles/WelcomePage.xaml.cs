@@ -1,5 +1,6 @@
 ﻿using System;
 using Circles.Entities;
+using Circles.ViewModels;
 using Xamarin.Forms;
 
 namespace Circles
@@ -12,6 +13,9 @@ namespace Circles
         public WelcomePage(User user)
         {
             InitializeComponent();
+            var viewModel = ViewModelLocator.WelcomePageViewModel;
+            viewModel.CurrentUser = user;
+            this.BindingContext = viewModel;
             CurrentUser = user;
             PopulatePageData(user);
         }

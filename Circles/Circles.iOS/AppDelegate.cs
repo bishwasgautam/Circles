@@ -24,7 +24,8 @@ namespace Circles.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
-
+            
+            //Azure mobile services
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
             SQLitePCL.CurrentPlatform.Init();
 

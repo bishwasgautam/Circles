@@ -24,8 +24,12 @@ namespace Circles
             {
                 var user = _userService.GetUser(userId);
 
+                //Add user to azure tables
+                var aus = new AzureUserService();
+                aus.AddUser(user);
+
                 //Save session / forms authentication
-                
+
                 //Forward to welcome page
                 await Navigation.PushAsync(new WelcomePage(user));
             }
