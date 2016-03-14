@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Circles.Data;
 using Xamarin.Forms;
 
 namespace Circles
@@ -25,10 +25,16 @@ namespace Circles
             //        }
             //    }
             //};
+            LoadData();
 
             MainPage = new NavigationPage(new LoginPage());
             
 
+        }
+
+        private static async void LoadData()
+        {
+             await ServiceLocator.DataService.LoadDummyData();
         }
 
         protected override void OnStart()

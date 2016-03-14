@@ -13,7 +13,7 @@ using Microsoft.WindowsAzure.MobileServices.Sync;
 
 namespace Circles
 {
-    public class AzureUserService 
+    public class AzureUserService
     {
         public MobileServiceClient MobileService { get; set; }
         private IMobileServiceSyncTable<User> _userTable;
@@ -89,7 +89,7 @@ namespace Circles
 
         public List<User> GetCirclesByUserId(Guid userId)
         {
-            return (List<User>) GetUsers().Result.Cast<User>().First(x => x.Id == userId).Circle;
+            return (List<User>)GetUsers().Result.Cast<User>().First(x => x.Id == userId).Circle;
         }
 
         public List<AddressBookPage> GetAddressBook(Guid userId)
@@ -133,7 +133,7 @@ namespace Circles
             throw new NotImplementedException();
         }
     }
-    
+
     public class AzureDataService : IDataService
     {
         //private readonly MobileServiceClient MobileService = new MobileServiceClient("https://[yourservice].azure-mobile.net/", "[yourkey]");
@@ -157,7 +157,7 @@ namespace Circles
 
             return theCollection;
         }
-        
+
 
         public async Task Save<T>(T pEntity)
         {
@@ -172,11 +172,11 @@ namespace Circles
                 ReportError(ex);
             }
         }
-        
+
         //todo add logging
         private void ReportError(Exception exception)
         {
-            
+
         }
 
 
@@ -194,7 +194,7 @@ namespace Circles
                 ReportError(ex);
             }
         }
-        
+
 
         public AzureDataService()
         {
@@ -212,7 +212,7 @@ namespace Circles
                 //todo a namespace can be scanned and automated
                 store.DefineTable<User>();
                 store.DefineTable<Address>();
-                store.DefineTable<AddressBookPage>();
+                store.DefineTable<AddressBook>();
                 store.DefineTable<PhoneInfo>();
 
 
@@ -220,7 +220,7 @@ namespace Circles
             }
         }
 
-        public async void LoadDummyData()
+        public async Task LoadDummyData()
         {
             await LoadDummyUsers();
             //LoadDummyAddresses();
@@ -230,19 +230,72 @@ namespace Circles
 
         }
 
-        private async  Task LoadDummyUsers()
+        private async Task LoadDummyUsers()
         {
             var adminUser = Builder<User>.CreateNew().With(x => x.AccessLevel = AccessLevel.Admin)
-                 .With(x => x.UserName = "admin")
-                 .With(x => x.Password = "admin2016").Build();
-            var members = Builder<User>.CreateListOfSize(10).All().With(x => x.AccessLevel = AccessLevel.Member).Build();
+                .With(x => x.FirstName = Faker.Name.First())
+                .With(x => x.LastName = Faker.Name.Last())
+                .With(x => x.BirthDate = Faker.Date.Birthday())
+                .With(x => x.Phone = new PhoneInfo()
+                {
+                    CellPhone = Faker.Phone.CellNumber(),
+                    Home = Faker.Phone.Number()
+                })
+                .With(x => x.UserName = "admin")
+                .With(x => x.Password = "admin2016")
+                .With(x => x.PrimaryEmail = Faker.Internet.Email())
+                .With(x => x.SecondaryEmail = Faker.Internet.Email())
+                .Build();
 
-            await this.Save<User>(adminUser);
+            var members = Builder<User>.CreateListOfSize(10).All().With(x => x.AccessLevel = AccessLevel.Member)
+                 .With(x => x.PrimaryEmail = Faker.Internet.Email())
+                 .With(x => x.SecondaryEmail = Faker.Internet.Email())
+                  .With(x => x.FirstName = Faker.Name.First())
+                .With(x => x.LastName = Faker.Name.Last())
+                .With(x => x.BirthDate = Faker.Date.Birthday())
+                .With(x => x.Phone = new PhoneInfo()
+                {
+                    CellPhone = Faker.Phone.CellNumber(),
+                    Home = Faker.Phone.Number()
+                })
+                 .With(x => x.Address = new Address()
+                 {
+                     City = Faker.Address.City(),
+                     State = Faker.Address.State(),
+                     StreetName = Faker.Address.StreetName(),
+                     Country = Faker.Address.Country(),
+                     ZipCode = Faker.Address.ZipCode(),
+                     Suite = Faker.Address.BuildingNumber()
+                 }).Build();
+
+            members.Add(adminUser);
 
             foreach (var user in members)
             {
+                var addressBook = GetDummyAddressBook(user);
+
+                user.AddressBook = addressBook;
+
                 await this.Save<User>(user);
             }
+
+
+        }
+
+        private IEnumerable<AddressBook> GetDummyAddressBook(User user)
+        {
+            return Builder<AddressBook>.CreateListOfSize(5).All()
+                     .With(x => x.User = user)
+                     .With(x => x.AddressName = Faker.Name.First() + " " + Faker.Name.Last())
+                     .With(x => x.Address = new Address()
+                     {
+                         City = Faker.Address.City(),
+                         State = Faker.Address.State(),
+                         StreetName = Faker.Address.StreetName(),
+                         Country = Faker.Address.Country(),
+                         ZipCode = Faker.Address.ZipCode(),
+                         Suite = Faker.Address.BuildingNumber()
+                     }).Build();
         }
     }
 }

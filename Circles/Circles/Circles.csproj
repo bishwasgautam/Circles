@@ -60,6 +60,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Faker.Portable, Version=2.2.0.64, Culture=neutral, PublicKeyToken=968d76e55a3a9814, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Faker.Net.Portable.2.2.0.64\lib\portable-net4+sl5+wp8+win8+wpa81+netcore45+MonoAndroid+Xamarin.iOS1\Faker.Portable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FizzWare.NBuilder">
       <HintPath>..\..\..\..\..\..\Downloads\NBuilder-3.0.1\NBuilder\FizzWare.NBuilder.dll</HintPath>
     </Reference>

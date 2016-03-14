@@ -16,7 +16,6 @@
   
       <Button x:Name="LoginBtn" Clicked="LoginClicked" Text="Login" HorizontalOptions="CenterAndExpand" BackgroundColor="Teal" TextColor="White"></Button>
       <Button x:Name="ForgotItBtn" Clicked="ForgotItClicked" Text="Forgot it" HorizontalOptions="CenterAndExpand" BackgroundColor="Teal" TextColor="White"></Button>
-    
 
   </StackLayout>
-</ContentPage>
+</ContentPage>  

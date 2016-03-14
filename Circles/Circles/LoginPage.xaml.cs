@@ -26,7 +26,7 @@ namespace Circles
 
                 //Add user to azure tables
                 var aus = new AzureUserService();
-                aus.AddUser(user);
+                await aus.AddUser(user);
 
                 //Save session / forms authentication
 

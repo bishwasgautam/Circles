@@ -1,9 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace Circles.Entities
 {
     public class Address
     {
+        [JsonProperty("id")]
+        public int Id{ get; set; }
         [JsonProperty("streetname")]
         public string StreetName { get; set; }
         [JsonProperty("suite")]

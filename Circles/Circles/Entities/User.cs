@@ -2,12 +2,14 @@
 
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 
 namespace Circles.Entities
 {
     public class User 
     {
+        [JsonProperty("id")]
         public Guid Id { get; set; }
 
         public string FirstName { get; set; }
@@ -19,11 +21,11 @@ namespace Circles.Entities
 
         public AccessLevel AccessLevel { get; set; }
 
-        public string PhoneInfoId { get; set; }
+        public int PhoneInfoId { get; set; }
         //[ForeignKey("PhoneInfoId")]
         public virtual PhoneInfo Phone { get; set; }
 
-        public string AddressId { get; set; }
+        public int AddressId { get; set; }
         public virtual  Address Address { get; set; }
 
         //Lazy load this
@@ -47,10 +49,10 @@ namespace Circles.Entities
     {
         public string AddressName { get; set; }
 
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
         public virtual User User { get; set; }
 
-        public string AddressId { get; set; }
+        public int AddressId { get; set; }
         public virtual Address Address { get; set; }
     }
 

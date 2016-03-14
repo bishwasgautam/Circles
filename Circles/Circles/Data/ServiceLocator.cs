@@ -18,6 +18,7 @@ namespace Circles.Data
         Task<System.Collections.ObjectModel.ObservableCollection<T>> GetAll<T>();
         Task Pull<T>();
         Task Save<T>(T pEntity);
+        Task LoadDummyData();
 
     }
 }

@@ -36,13 +36,13 @@ namespace Circles.ViewModels
         {
         }
 
-        private async Task<ObservableCollection<AddressBookPage>> LoadAddressBook()
+        private async Task<ObservableCollection<AddressBook>> LoadAddressBook()
         {
-            var theCollection = new ObservableCollection<AddressBookPage>();
+            var theCollection = new ObservableCollection<AddressBook>();
 
             try
             {
-                theCollection = await _dataService.GetAll<AddressBookPage>();
+                theCollection = await _dataService.GetAll<AddressBook>();
             }
             catch (Exception ex)
             {
