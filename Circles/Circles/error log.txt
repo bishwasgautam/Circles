@@ -1,0 +1,131 @@
+{Newtonsoft.Json.JsonSerializationException: Self referencing loop detected for property 'User' with type 'Circles.Entities.User'. Path 'AddressBook[0]'.
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.CheckForCircularReference (Newtonsoft.Json.JsonWriter writer, System.Object value, Newtonsoft.Json.Serialization.JsonProperty property, Newtonsoft.Json.Serialization.JsonContract contract, Newtonsoft.Json.Serialization.JsonContainerContract containerContract, Newtonsoft.Json.Serialization.JsonProperty containerProperty) [0x000e0] in <filename unknown>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.CalculatePropertyValues (Newtonsoft.Json.JsonWriter writer, System.Object value, Newtonsoft.Json.Serialization.JsonContainerContract contract, Newtonsoft.Json.Serialization.JsonProperty member, Newtonsoft.Json.Serialization.JsonProperty property, Newtonsoft.Json.Serialization.JsonContract& memberContract, System.Object& memberValue) [0x000c7] in <filename unknown>:0 
+  at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject (Newtonsoft.Json.JsonWriter writer, System.Object value, Newtonsoft.Json.Serialization.JsonObjectContract contract, Newtonsoft.Json.Serialization.JsonProperty member, Newtonsoft.Json.Serialization.JsonContainerContract collectionContract, Newtonsoft.Json.Serialization.JsonProperty containerProperty) [0x0003c] in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter.GetResult () [0x00000] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:124 
+  at Circles.AzureDataService+<Save>d__2`1[T].MoveNext () [0x00045] in C:\Users\bgautam\Documents\Visual Studio 2015\Projects\Circles\Circles\Circles\AzureUserService.cs:169 }
+  
+  {System.ArgumentException: The id must be of type string.
+Parameter name: instance
+  at Microsoft.WindowsAzure.MobileServices.Sync.MobileServiceSyncTable.EnsureIdIsString (System.Object id) [0x00029] in <filename unknown>:0 
+  at Microsoft.WindowsAzure.MobileServices.Sync.MobileServiceSyncTable+<InsertAsync>d__0.MoveNext () [0x0007d] in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter`1[TResult].GetResult () [0x00000] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:372 
+  at Microsoft.WindowsAzure.MobileServices.Sync.MobileServiceSyncTable`1+<InsertAsync>d__7[T].MoveNext () [0x000b6] in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter.GetResult () [0x00000] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:124 
+  at Circles.AzureDataService+<Save>d__2`1[T].MoveNext () [0x00045] in C:\Users\bgautam\Documents\Visual Studio 2015\Projects\Circles\Circles\Circles\AzureUserService.cs:169 }
+  
+  
+  {System.InvalidOperationException: An insert operation on the item is already in the queue.
+  at Microsoft.WindowsAzure.MobileServices.Sync.InsertOperation.Validate (Microsoft.WindowsAzure.MobileServices.Sync.MobileServiceTableOperation newOperation) [0x00008] in <filename unknown>:0 
+  at Microsoft.WindowsAzure.MobileServices.Sync.MobileServiceSyncContext+<>c__DisplayClass67+<<ExecuteOperationAsync>b__66>d__69.MoveNext () [0x000d0] in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter.GetResult () [0x00000] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:124 
+  at Microsoft.WindowsAzure.MobileServices.Sync.MobileServiceSyncContext+<ExecuteOperationSafeAsync>d__6f.MoveNext () [0x002b8] in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter.GetResult () [0x00000] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:124 
+  at Microsoft.WindowsAzure.MobileServices.Sync.MobileServiceSyncContext+<InsertAsync>d__e.MoveNext () [0x00146] in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter.GetResult () [0x00000] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:124 
+  at Microsoft.WindowsAzure.MobileServices.Sync.MobileServiceSyncTable+<InsertAsync>d__0.MoveNext () [0x00110] in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter`1[TResult].GetResult () [0x00000] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:372 
+  at Microsoft.WindowsAzure.MobileServices.Sync.MobileServiceSyncTable`1+<InsertAsync>d__7[T].MoveNext () [0x000b6] in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter.GetResult () [0x00000] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:124 
+  at Circles.AzureDataService+<Save>d__2`1[T].MoveNext () [0x00045] in C:\Users\bgautam\Documents\Visual Studio 2015\Projects\Circles\Circles\Circles\AzureUserService.cs:171 }
+  
+  
+   Push result CancelledByAuthenticationError
+   
+   {Microsoft.WindowsAzure.MobileServices.Sync.MobileServicePushFailedException: Push operation has failed. See the PushResult for details.
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter.GetResult () [0x00000] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:124 
+  at Microsoft.WindowsAzure.MobileServices.Sync.MobileServiceSyncContext+<ExecuteSyncAction>d__3c.MoveNext () [0x00093] in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter.GetResult () [0x00000] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:124 
+  at Microsoft.WindowsAzure.MobileServices.Sync.MobileServiceSyncContext+<PushAsync>d__36.MoveNext () [0x00194] in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter.GetResult () [0x00000] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:124 
+  at Microsoft.WindowsAzure.MobileServices.Sync.MobileServiceSyncContext+<DeferTableActionAsync>d__5b.MoveNext () [0x0011f] in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter.GetResult () [0x00000] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:124 
+  at Microsoft.WindowsAzure.MobileServices.Sync.TableAction+<ExecuteAsync>d__0.MoveNext () [0x000a4] in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter.GetResult () [0x00000] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:124 
+  at Microsoft.WindowsAzure.MobileServices.Sync.MobileServiceSyncContext+<ExecuteSyncAction>d__3c.MoveNext () [0x00093] in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter.GetResult () [0x00000] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:124 
+  at Microsoft.WindowsAzure.MobileServices.Sync.MobileServiceSyncContext+<PullAsync>d__25.MoveNext () [0x0040a] in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter.GetResult () [0x00000] in /Users/builder/data/lanes/2970/46c3f7e0/source/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:124 
+  at Circles.AzureDataService+<Save>d__2`1[T].MoveNext () [0x0010f] in C:\Users\bgautam\Documents\Visual Studio 2015\Projects\Circles\Circles\Circles\AzureDataService.cs:54 }
+  
+  
+  
+  
+  
+  AOT module 'System.Net.Http.dll.so'  Frequent Error
+  AOT module 'System.Net.Http.dll.so'  Frequent Error
+  AOT module 'System.Net.Http.dll.so'  Frequent ErrorAOT module 'System.Net.Http.dll.so'  Frequent Error
