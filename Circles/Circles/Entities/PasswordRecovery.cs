@@ -6,7 +6,7 @@ namespace Circles.Entities
     {
         //<TODO> Auto Generated, finite number of questions
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public string Id { get; set; }
 
         //TODO Just need the id, question can be loaded lazily
         public string Question { get; set; }

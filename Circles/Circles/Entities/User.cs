@@ -9,9 +9,10 @@ namespace Circles.Entities
 {
     public class User 
     {
-        [JsonProperty("id")]
-        public Guid Id { get; set; }
+        
 
+        [JsonProperty("id")]
+        public string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
@@ -21,17 +22,19 @@ namespace Circles.Entities
 
         public AccessLevel AccessLevel { get; set; }
 
-        public int PhoneInfoId { get; set; }
+        public string PhoneInfoId { get; set; }
         //[ForeignKey("PhoneInfoId")]
         public virtual PhoneInfo Phone { get; set; }
 
-        public int AddressId { get; set; }
+        public string AddressId { get; set; }
         public virtual  Address Address { get; set; }
 
         //Lazy load this
         public virtual IEnumerable<AddressBook> AddressBook { get; set; }
         
         public DateTime BirthDate { get; set; }
+
+        [JsonIgnore]
         public int Age => (int)Math.Floor((decimal)(DateTime.Now.Year - BirthDate.Year));
         
 
@@ -43,17 +46,6 @@ namespace Circles.Entities
             //TODO To QuickString ();
             return base.ToString();
         }
-    }
-
-    public class AddressBook
-    {
-        public string AddressName { get; set; }
-
-        public Guid UserId { get; set; }
-        public virtual User User { get; set; }
-
-        public int AddressId { get; set; }
-        public virtual Address Address { get; set; }
     }
 
     public enum AccessLevel

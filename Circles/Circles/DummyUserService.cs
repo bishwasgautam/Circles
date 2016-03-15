@@ -8,14 +8,14 @@ namespace Circles
 {
     public class DummyUserService: IUserService
     {
-        public User GetUser(Guid userId)
+        public User GetUser(string userId)
         {
             return new User()
             {
                 FirstName = "Bishwas",
                 LastName = "Gautam",
                 AccessLevel = AccessLevel.Admin,
-                AddressBook  = GetAddressBook(Guid.NewGuid()),
+                AddressBook  = GetAddressBook("random"),
                 PrimaryEmail = "bgautam@dunnsolutions.com",
                 Phone = new PhoneInfo() {CellPhone = "224-420-2609"},
                 UserName = "bishwasgautam",
@@ -23,12 +23,12 @@ namespace Circles
             };
         }
 
-        public Guid Authenticate(string userName, string passWord)
+        public string Authenticate(string userName, string passWord)
         {
-           return Guid.NewGuid();
+            return "random";
         }
 
-        public void ForgotLogin(string email, Guid userId)
+        public void ForgotLogin(string email, string userId)
         {
             //send email
 
@@ -38,7 +38,7 @@ namespace Circles
             //send text
         }
 
-        public List<User> GetCirclesByUserId(Guid id)
+        public List<User> GetCirclesByUserId(string id)
         {
            return new List<User>()
            {
@@ -46,7 +46,7 @@ namespace Circles
                {
                    FirstName ="Bishwas", LastName ="Gautam",
                    AccessLevel = AccessLevel.Admin,
-                   Address = GetAddressBook(new Guid()).First().Address,
+                   Address = GetAddressBook("random").First().Address,
                    PrimaryEmail = "bgautam@dunnsolutions.com",
                    Phone = new PhoneInfo() { CellPhone = "224-420-2609"},
                    UserName = "bishwasgautam", Password = "circles101"
@@ -56,7 +56,7 @@ namespace Circles
            };
         }
 
-        public List<AddressBook> GetAddressBook(Guid userId)
+        public List<AddressBook> GetAddressBook(string userId)
         {
            return new List<AddressBook>()
            {
@@ -71,12 +71,12 @@ namespace Circles
             return true;
         }
 
-        public bool AddToCircle(Guid userId)
+        public bool AddToCircle(string userId)
         {
             return true;
         }
 
-        public bool RemoveFromCircle(Guid userId)
+        public bool RemoveFromCircle(string userId)
         {
             return true;
         }
@@ -96,7 +96,7 @@ namespace Circles
             return true;
         }
 
-        public bool RemoveUser(Guid id)
+        public bool RemoveUser(string id)
         {
             return true;
         }

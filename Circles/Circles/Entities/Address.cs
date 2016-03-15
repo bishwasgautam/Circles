@@ -6,7 +6,7 @@ namespace Circles.Entities
     public class Address
     {
         [JsonProperty("id")]
-        public int Id{ get; set; }
+        public string Id { get; set; }
         [JsonProperty("streetname")]
         public string StreetName { get; set; }
         [JsonProperty("suite")]

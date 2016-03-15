@@ -20,13 +20,16 @@ namespace Circles
             var password = PasswordEntry.Text;
 
             var userId = _userService.Authenticate(username, password);
-            if (userId != Guid.Empty)
+            if (!string.IsNullOrEmpty(userId))
             {
                 var user = _userService.GetUser(userId);
-
-                //Add user to azure tables
-                var aus = new AzureUserService();
-                await aus.AddUser(user);
+                if (user != null)
+                {
+                    //Add user to azure tables
+                    var aus = new AzureUserService();
+                    //await aus.AddUser(user);
+                }
+                
 
                 //Save session / forms authentication
 

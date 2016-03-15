@@ -6,7 +6,7 @@ namespace Circles.Entities
     {
         //TODO define phone format (data annotations)
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Home { get; set; }
         public string Work { get; set; }
         public string CellPhone { get; set; }
