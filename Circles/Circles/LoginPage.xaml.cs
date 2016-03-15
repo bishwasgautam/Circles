@@ -22,6 +22,7 @@ namespace Circles
             base.OnAppearing();
         }
 
+        
         private async void LoginClicked(object sender, EventArgs e)
         {
             var username = UserNameEntry.Text;
@@ -42,7 +43,7 @@ namespace Circles
             
 
             // Set syncItems to true in order to synchronize the data on startup when running in offline mode
-            if (App.Authenticated)
+            if (App.Authenticated && user != null)
                 await Navigation.PushAsync(new WelcomePage(user));
 
             //send the new page

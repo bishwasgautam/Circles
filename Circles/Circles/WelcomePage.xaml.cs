@@ -13,6 +13,8 @@ namespace Circles
         public WelcomePage(User user)
         {
             InitializeComponent();
+
+            App.LoadData();
             viewModel = ViewModelLocator.WelcomePageViewModel;
             viewModel.CurrentUser = user;
             this.BindingContext = viewModel;

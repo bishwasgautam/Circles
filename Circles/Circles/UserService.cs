@@ -10,7 +10,7 @@ namespace Circles
     {
         private IMobileServiceSyncTable<User> _userTable;
 
-        public UserService()
+        public UserService(bool isAuthenticated) : base(isAuthenticated)
         {
             Initialize();
             _userTable = Table<User>();

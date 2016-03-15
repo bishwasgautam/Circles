@@ -8,8 +8,8 @@ namespace Circles.Data
 {
     public class ServiceLocator
     {
-        public static IDataService DataService => new AzureDataService();
-        public static IUserService UserService => new UserService();
+        public static IDataService DataService => new AzureDataService(App.Authenticated);
+        public static IUserService UserService => new UserService(App.Authenticated);
         public static IAuthenticate DefaultAuthenticator => new AzureUserAuthentication();
     }
 

@@ -1,4 +1,5 @@
-﻿using Circles.Data;
+﻿using System.Diagnostics;
+using Circles.Data;
 using Xamarin.Forms;
 
 namespace Circles
@@ -21,7 +22,7 @@ namespace Circles
             //        }
             //    }
             //};
-            LoadData();
+            
 
             MainPage = new NavigationPage(new LoginPage());
             
@@ -29,7 +30,19 @@ namespace Circles
         }
 
         public static IAuthenticate Authenticator { get; private set; }
-        public static bool Authenticated { get; set; }
+        private static bool _authenticated;
+        public static bool Authenticated {
+            get { return _authenticated;}
+            set {
+                _authenticated = value;
+                if (_authenticated)
+                {
+                    //display dialog
+                    Debug.WriteLine($"*************Successfully Authenticated********************");
+                   
+                }
+            }
+        }
 
         public static void Init(IAuthenticate authenticator)
         {
@@ -44,7 +57,7 @@ namespace Circles
             
         }
 
-        private static async void LoadData()
+        public static async void LoadData()
         {
              await ServiceLocator.DataService.LoadDummyData();
         }

@@ -15,6 +15,7 @@ namespace Circles
 {
     public class AzureDataService : IDataService
     {
+        private bool IsAuthenticated;
         private readonly IMobileServiceClient _mobileService = MobileServiceClients.AzureMobileService;
         public async Task<ObservableCollection<T>> GetAll<T>()
         {
@@ -52,9 +53,10 @@ namespace Circles
                 var key = string.Concat("all", typeof(T).Name, "s");
 
                 await table.PullAsync(key, table.CreateQuery());
-                
+
                 //save new records to cloud
-                await _mobileService.SyncContext.PushAsync();
+                if (IsAuthenticated)
+                    await _mobileService.SyncContext.PushAsync();
             }
             catch (Exception ex)
             {
@@ -92,9 +94,10 @@ namespace Circles
 
      
 
-        public AzureDataService()
+        public AzureDataService(bool isAuthenticated)
         {
             Initialize();
+            IsAuthenticated = isAuthenticated;
         }
 
         
@@ -116,7 +119,7 @@ namespace Circles
                 await _mobileService.SyncContext.InitializeAsync(store, new AzureDataSyncHandler());
 
                 //push any new record to cloud
-                if(App.Authenticated)
+                if(IsAuthenticated)
                 await _mobileService.SyncContext.PushAsync();
             }
             
@@ -172,6 +175,7 @@ namespace Circles
                 }).Build();
 
             members.Add(adminUser);
+
             var count = 0;
             foreach (var user in members)
             {
