@@ -28,6 +28,8 @@ namespace Circles.WinPhone
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
+            Circles.App.Init(null);
+
             LoadApplication(new Circles.App());
         }
 

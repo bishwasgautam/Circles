@@ -21,6 +21,8 @@ namespace Circles.Windows
         {
             this.InitializeComponent();
 
+            Circles.App.Init(null);
+
             LoadApplication(new Circles.App());
         }
     }

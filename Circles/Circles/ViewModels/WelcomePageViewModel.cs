@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Circles.Data;
@@ -26,6 +28,11 @@ namespace Circles.ViewModels
             _dataService = ServiceLocator.DataService;
         }
 
+        internal IEnumerable<AddressBook> GetAddressBook()
+        {
+            return CurrentUser.AddressBook;
+        }
+
         //For dependency injection
         public WelcomePageViewModel(IDataService dataService)
         {
@@ -38,7 +45,7 @@ namespace Circles.ViewModels
 
         private async Task<ObservableCollection<AddressBook>> LoadAddressBook()
         {
-            var theCollection = new ObservableCollection<AddressBook>();
+            ObservableCollection<AddressBook> theCollection;
 
             try
             {
@@ -52,6 +59,11 @@ namespace Circles.ViewModels
             }
 
             return theCollection;
+        }
+
+        public IEnumerable GetAddressBook(object id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

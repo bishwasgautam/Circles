@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Circles.Constants;
 using Circles.Data;
 using Circles.Entities;
 using FizzWare.NBuilder;
 using Microsoft.WindowsAzure.MobileServices;
 using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
-using ModernHttpClient;
+using Microsoft.WindowsAzure.MobileServices.Sync;
 
 namespace Circles
 {
     public class AzureDataService : IDataService
     {
-        //private readonly MobileServiceClient MobileService = new MobileServiceClient("https://[yourservice].azure-mobile.net/", "[yourkey]");
-        private readonly MobileServiceClient _mobileService = new MobileServiceClient("https://mobilepoc.azurewebsites.net", 
-            new NativeMessageHandler());
+        private readonly IMobileServiceClient _mobileService = MobileServiceClients.AzureMobileService;
         public async Task<ObservableCollection<T>> GetAll<T>()
         {
 
@@ -44,13 +43,14 @@ namespace Circles
             try
             {
                 //get the local table
-                var table = _mobileService.GetSyncTable<T>();
+                var table = Table<T>();
                
                 //save data
                 await table.InsertAsync(pEntity);
 
                 ////pull down all latest changes
                 var key = string.Concat("all", typeof(T).Name, "s");
+
                 await table.PullAsync(key, table.CreateQuery());
                 
                 //save new records to cloud
@@ -60,6 +60,11 @@ namespace Circles
             {
                 ReportError(ex);
             }
+        }
+
+        public IMobileServiceSyncTable<T> Table<T>()
+        {
+            return _mobileService.GetSyncTable<T>();
         }
 
         //todo add logging
@@ -85,23 +90,21 @@ namespace Circles
             }
         }
 
-        //public async Task SaveChanges<T>()
-        //{
-        //    await _mobileService.SyncContext.PushAsync();
-        //}
-
+     
 
         public AzureDataService()
         {
             Initialize();
         }
 
-        private async void Initialize()
+        
+       
+        protected async void Initialize()
         {
             if (!_mobileService.SyncContext.IsInitialized)
             {
                 //local db
-                var store = new MobileServiceSQLiteStore("local.db");
+                var store = new MobileServiceSQLiteStore(AppConstants.SQLiteDatabasePath);
                 //define all tables here
                 //todo a namespace can be scanned and automated
                 store.DefineTable<User>();
@@ -113,6 +116,7 @@ namespace Circles
                 await _mobileService.SyncContext.InitializeAsync(store, new AzureDataSyncHandler());
 
                 //push any new record to cloud
+                if(App.Authenticated)
                 await _mobileService.SyncContext.PushAsync();
             }
             
@@ -184,7 +188,7 @@ namespace Circles
 
         }
 
-        private IEnumerable<AddressBook> GetDummyAddressBook(User user)
+        public IEnumerable<AddressBook> GetDummyAddressBook(User user)
         {
             return Builder<AddressBook>.CreateListOfSize(5).All()
                 .With(x => x.WPLHID = user.Id)

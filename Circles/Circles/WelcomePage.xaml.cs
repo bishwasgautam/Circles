@@ -7,16 +7,15 @@ namespace Circles
 {
     public partial class WelcomePage : ContentPage
     {
-        public User CurrentUser { get; set; }
-        private readonly IUserService _userService = new DummyUserService();
+        private readonly WelcomePageViewModel viewModel;
 
+       
         public WelcomePage(User user)
         {
             InitializeComponent();
-            var viewModel = ViewModelLocator.WelcomePageViewModel;
+            viewModel = ViewModelLocator.WelcomePageViewModel;
             viewModel.CurrentUser = user;
             this.BindingContext = viewModel;
-            CurrentUser = user;
             PopulatePageData(user);
         }
 
@@ -28,7 +27,7 @@ namespace Circles
         private void ShowAddressBook_OnClicked(object sender, EventArgs e)
         {
             //TODO Custom list view with edit and remove
-            var addresses = _userService.GetAddressBook(CurrentUser.Id);
+            var addresses = viewModel.GetAddressBook();
             AddressBookListView.ItemsSource = addresses;
 
         }

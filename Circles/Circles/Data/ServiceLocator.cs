@@ -9,7 +9,8 @@ namespace Circles.Data
     public class ServiceLocator
     {
         public static IDataService DataService => new AzureDataService();
-     
+        public static IUserService UserService => new UserService();
+        public static IAuthenticate DefaultAuthenticator => new AzureUserAuthentication();
     }
 
 
@@ -20,5 +21,15 @@ namespace Circles.Data
         Task Save<T>(T pEntity);
         Task LoadDummyData();
 
+    }
+
+    public interface IAuthService : IAuthenticate
+    {
+      
+    }
+
+    public interface IAuthenticate
+    {
+        Task<bool> Authenticate(string username, string password);
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Circles.Data;
+﻿using Circles.Data;
 using Xamarin.Forms;
 
 namespace Circles
@@ -30,6 +26,22 @@ namespace Circles
             MainPage = new NavigationPage(new LoginPage());
             
 
+        }
+
+        public static IAuthenticate Authenticator { get; private set; }
+        public static bool Authenticated { get; set; }
+
+        public static void Init(IAuthenticate authenticator)
+        {
+            if (authenticator != null)
+            {
+                Authenticator = authenticator;
+            }
+            else
+            {
+                Authenticator = ServiceLocator.DefaultAuthenticator;
+            }
+            
         }
 
         private static async void LoadData()

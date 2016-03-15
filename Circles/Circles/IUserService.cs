@@ -4,10 +4,10 @@ using Circles.Entities;
 
 namespace Circles
 {
-    interface IUserService
+    public interface IUserService
     {
-        User GetUser(string userId);
-        string Authenticate(string userName, string passWord);
+        User GetUser(string userName);
+        bool IsValidLogin(string username, string password);
 
         //Send confirmation email / text
         void ForgotLogin(string email, string userId);

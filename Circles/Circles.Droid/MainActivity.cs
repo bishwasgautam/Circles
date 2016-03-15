@@ -20,6 +20,14 @@ namespace Circles.Droid
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            //Let Xamarin.Forms handle Authentication
+            App.Init(null); //Otherwise pass own Authenticator App.Init(IAuthenticator droidAuth);
+            //ref https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-forms-get-started-users/
+
+
+
+
             LoadApplication(new App());
         }
     }

@@ -29,6 +29,10 @@ namespace Circles.iOS
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
             SQLitePCL.CurrentPlatform.Init();
 
+            //Let Xamarin.Forms handle Authentication
+            App.Init(null); //Otherwise pass own Authenticator App.Init(IAuthenticator iOSAuth);
+            //ref https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-forms-get-started-users/
+
             return base.FinishedLaunching(app, options);
         }
     }
