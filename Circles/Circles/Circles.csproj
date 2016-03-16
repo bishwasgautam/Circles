@@ -35,32 +35,40 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AddressBookPage.xaml.cs">
-      <DependentUpon>AddressBookPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.cs" />
-    <Compile Include="AzureDataService.cs" />
-    <Compile Include="AzureDataSyncHandler.cs" />
-    <Compile Include="AzureUserAuthentication.cs" />
+    <Compile Include="Common\Extensions\EnumExtensions.cs" />
     <Compile Include="Constants\AppConstants.cs" />
-    <Compile Include="Data\ServiceLocator.cs" />
+    <Compile Include="Services\AzureDataService.cs" />
+    <Compile Include="Services\AzureDataSyncHandler.cs" />
+    <Compile Include="Services\AzureUserAuthentication.cs" />
+    <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Services\MobileServiceClients.cs" />
+    <Compile Include="Services\ServiceLocator.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\AddressBook.cs" />
     <Compile Include="Entities\PasswordRecovery.cs" />
     <Compile Include="Entities\PhoneInfo.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="IUserService.cs" />
-    <Compile Include="MobileServiceClients.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserService.cs" />
     <Compile Include="ViewModels\AddressBookViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="ViewModels\WelcomePageViewModel.cs" />
-    <Compile Include="WelcomePage.xaml.cs">
+    <Compile Include="Views\AddressBookCreatePage.xaml.cs">
+      <DependentUpon>AddressBookCreatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddressBookEditPage.xaml.cs">
+      <DependentUpon>AddressBookEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddressBookPage.xaml.cs">
+      <DependentUpon>AddressBookPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -119,22 +127,31 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="WelcomePage.xaml">
+    <EmbeddedResource Include="Views\AddressBookCreatePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="LoginPage.xaml">
+    <EmbeddedResource Include="Views\AddressBookEditPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\" />
+    <EmbeddedResource Include="Views\AddressBookPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AddressBookPage.xaml">
+    <EmbeddedResource Include="Views\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\WelcomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

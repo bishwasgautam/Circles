@@ -3,7 +3,7 @@ using Circles.Entities;
 using Circles.ViewModels;
 using Xamarin.Forms;
 
-namespace Circles
+namespace Circles.Views
 {
     public partial class LoginPage : ContentPage
     {
@@ -25,20 +25,20 @@ namespace Circles
         
         private async void LoginClicked(object sender, EventArgs e)
         {
-            var username = UserNameEntry.Text;
-            var password = PasswordEntry.Text;
+            //var username = UserNameEntry.Text;
+            //var password = PasswordEntry.Text;
 
             User user = null;
 
-            if (ViewModel.IsValidUser(username, password))
-            {
-                user = ViewModel.GetCurrentUser(username);
-            }
-
+            //if (ViewModel.IsValidUser(username, password))
+            //{
+            //   
+            //}
+            user = ViewModel.GetCurrentUser("admin");
 
             if (App.Authenticator != null)
             {
-                App.Authenticated = await App.Authenticator.Authenticate(username, password);
+                App.Authenticated =  await App.Authenticator.Authenticate();
             }
             
 

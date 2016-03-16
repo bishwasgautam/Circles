@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Circles.Views.WelcomePage"
+             Title="Welcome to Circles!!">
+  <StackLayout>
+    
+   
+
+      <Label x:Name="WelcomeTextLbl" Text="Hello, Welcome To Circles!" TextColor="Red" VerticalOptions="Center" HorizontalOptions="Center" />    
+      
+      <Button x:Name="ShowAddressBook" Clicked="ShowAddressBook_OnClicked"></Button>
+
+      <Button x:Name="LogOut" Clicked="LogOut_OnClicked" BackgroundColor="Yellow" TextColor="Black"></Button>
+      
+    
+   
+  </StackLayout>
+  
+  
+  
+</ContentPage>

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Threading.Tasks;
 using Foundation;
 using UIKit;
+using Microsoft.WindowsAzure.MobileServices;
+using System.Threading.Tasks;
+using Circles.Services;
 
 namespace Circles.iOS
 {
@@ -11,7 +14,7 @@ namespace Circles.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IAuthenticate
     {
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
@@ -23,17 +26,60 @@ namespace Circles.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
-            
+
             //Azure mobile services
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
             SQLitePCL.CurrentPlatform.Init();
 
             //Let Xamarin.Forms handle Authentication
-            App.Init(null); //Otherwise pass own Authenticator App.Init(IAuthenticator iOSAuth);
+            App.Init((IAuthenticate)this); //Otherwise pass own Authenticator App.Init(IAuthenticator iOSAuth);
             //ref https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-forms-get-started-users/
 
+            LoadApplication(new App());
+            
+           
+
+           
+
             return base.FinishedLaunching(app, options);
+        }
+
+        // Define a authenticated user.
+        private MobileServiceUser user;
+
+        public async Task<bool> Authenticate()
+        {
+            var success = false;
+            try
+            {
+                // Sign in with Facebook login using a server-managed flow.
+                if (user == null)
+                {
+                    user = await MobileServiceClients.AzureMobileService.LoginAsync(UIApplication.SharedApplication.KeyWindow.RootViewController,
+                        MobileServiceAuthenticationProvider.Facebook);
+                    if (user != null)
+                    {
+                        UIAlertView avAlert = new UIAlertView("Authentication", "You are now logged in " + user.UserId, null, "OK", null);
+                        avAlert.Show();
+                    }
+                }
+
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                UIAlertView avAlert = new UIAlertView("Authentication failed", ex.Message, null, "OK", null);
+                avAlert.Show();
+            }
+            return success;
+        }
+
+        public void Logout()
+        {
+            foreach (var cookie in NSHttpCookieStorage.SharedStorage.Cookies)
+            {
+                NSHttpCookieStorage.SharedStorage.DeleteCookie(cookie);
+            }
         }
     }
 }

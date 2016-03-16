@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Circles.Views.AddressBookCreatePage">
+  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+
+  <StackLayout BindingContext="{Binding CurrentAddItem}">
+    <Label Text="Name" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Entry x:Name="AddressName" BindingContext="{Binding AddressName}" HorizontalOptions="Center" BackgroundColor="White" PlaceholderColor="Gray" Placeholder="Username or Email"  TextColor="Navy" Keyboard="Default"/>
+
+    <Label Text="Street" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Entry x:Name="StreetEntry"  BindingContext="{Binding Address.StreetName}" HorizontalOptions="Center" BackgroundColor="White" Placeholder="Street" PlaceholderColor="Gray" TextColor="Navy" Keyboard="Default"/>
+
+    <Label Text="Suite" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Entry x:Name="SuiteEntry"  BindingContext="{Binding Address.Suite}" HorizontalOptions="Center" BackgroundColor="White" Placeholder="Suite" PlaceholderColor="Gray" TextColor="Navy" Keyboard="Default"/>
+
+    <Label Text="City" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Entry x:Name="CityEntry"  BindingContext="{Binding Address.City}" HorizontalOptions="Center" BackgroundColor="White" Placeholder="City" PlaceholderColor="Gray" TextColor="Navy" Keyboard="Default"/>
+
+    <Label Text="ZipCode" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Entry x:Name="ZipCode" BindingContext="{Binding Address.ZipCode}" HorizontalOptions="Center" BackgroundColor="White" Placeholder="ZipCode" PlaceholderColor="Gray" TextColor="Navy" Keyboard="Default"/>
+
+
+    <Button x:Name="btnSave" Text="Save" Clicked="BtnSave_OnClicked"></Button>
+    <Button x:Name="btnCancel" Text="Cancel" Clicked="BtnCancel_OnClicked"></Button>
+    
+  </StackLayout>
+</ContentPage>

@@ -4,16 +4,16 @@ using System.Linq;
 using Circles.Entities;
 using Microsoft.WindowsAzure.MobileServices.Sync;
 
-namespace Circles
+namespace Circles.Services
 {
-    public class UserService : AzureDataService, IUserService
+    public class UserService :  IUserService
     {
         private IMobileServiceSyncTable<User> _userTable;
-
-        public UserService(bool isAuthenticated) : base(isAuthenticated)
+        private readonly IDataService _dataService;
+        public UserService()
         {
-            Initialize();
-            _userTable = Table<User>();
+            _dataService = ServiceLocator.DataService;
+            _userTable = _dataService.Table<User>();
         }
         
         public bool IsValidLogin(string username, string password)
@@ -101,7 +101,7 @@ namespace Circles
 
         public User GetUser(string username)
         {
-            return GetAll<User>()
+            return _dataService.GetAll<User>()
                 .Result.ToList()
                 .First(user => string.Equals(user.UserName, username, StringComparison.CurrentCulture));
         }

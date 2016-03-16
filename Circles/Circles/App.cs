@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using Circles.Data;
+using Circles.Services;
 using Xamarin.Forms;
 
 namespace Circles
@@ -24,7 +24,7 @@ namespace Circles
             //};
             
 
-            MainPage = new NavigationPage(new LoginPage());
+            MainPage = new NavigationPage(new Views.LoginPage());
             
 
         }
@@ -56,12 +56,7 @@ namespace Circles
             }
             
         }
-
-        public static async void LoadData()
-        {
-             await ServiceLocator.DataService.LoadDummyData();
-        }
-
+        
         protected override void OnStart()
         {
             // Handle when your app starts

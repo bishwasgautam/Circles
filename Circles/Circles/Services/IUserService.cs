@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Circles.Entities;
 
-namespace Circles
+namespace Circles.Services
 {
     public interface IUserService
     {

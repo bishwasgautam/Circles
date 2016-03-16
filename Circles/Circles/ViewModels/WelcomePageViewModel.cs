@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using Circles.Data;
 using Circles.Entities;
+using Circles.Services;
 
 namespace Circles.ViewModels
 {
@@ -12,14 +12,32 @@ namespace Circles.ViewModels
     {
         private readonly IUserService _userService;
 
-        public User CurrentUser { get; set; }
-
-        private ObservableCollection<AddressBookPage> _addressBook;
-        public ObservableCollection<AddressBookPage> AddressBook{
-            get { return _addressBook;}
-            set { if (value != _addressBook) _addressBook = value; RaisePropertyChanged(() => AddressBook); }
+        private User _currentUser;
+        public User CurrentUser
+        {
+            get
+            {
+                return _currentUser;
+            }
+            set
+            {
+                _currentUser = value;
+                RaisePropertyChanged();
+            }
         }
+
+        private ObservableCollection<AddressBook> _addressBook;
         
+
+        public ObservableCollection<AddressBook> AddressBook{
+            get { return _addressBook;}
+            set {
+                if (value != _addressBook)
+                    _addressBook = value;
+                RaisePropertyChanged(() => AddressBook); }
+        }
+
+       
         public WelcomePageViewModel(User user)
         {
             CurrentUser = user;

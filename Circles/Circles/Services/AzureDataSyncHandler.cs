@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices.Sync;
 using Newtonsoft.Json.Linq;
 
-namespace Circles
+namespace Circles.Services
 {
     public class AzureDataSyncHandler : IMobileServiceSyncHandler
     {
