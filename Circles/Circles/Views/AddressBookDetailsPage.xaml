@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Circles.Views.AddressBookDetailsPage">
+  
+  <StackLayout BindingContext="{Binding CurrentEditItem}">
+    
+    <Label Text="Contact Name"  HorizontalOptions="Start" />
+    <Label x:Name="AddressName" Text="{Binding AddressName}" HorizontalOptions="CenterAndExpand" BackgroundColor="White"   TextColor="Navy"/>
+    
+    <Label Text="Street" HorizontalOptions="Start" />
+    <Label x:Name="StreetEntry"  Text="{Binding Address.StreetName}"  HorizontalOptions="CenterAndExpand" BackgroundColor="White"  TextColor="Navy" />
+
+    <Label Text="Suite" HorizontalOptions="Start" />
+    <Label x:Name="SuiteEntry"  Text="{Binding Address.Suite}"  HorizontalOptions="CenterAndExpand" BackgroundColor="White"  TextColor="Navy" />
+
+    <Label Text="City" HorizontalOptions="Start" />
+    <Label x:Name="CityEntry"  Text="{Binding Address.City}" HorizontalOptions="CenterAndExpand" BackgroundColor="White"  TextColor="Navy"  />
+
+    <Label Text="ZipCode" HorizontalOptions="Start" />
+    <Label x:Name="ZipCode" Text="{Binding Address.ZipCode}"  HorizontalOptions="CenterAndExpand" BackgroundColor="White"  TextColor="Navy"/>
+
+   
+    <Button x:Name="btnSave" Text="Edit" Clicked="BtnEdit_OnClicked"></Button>
+    <Button x:Name="btnDelete" Text="Delete" Clicked="BtnDelete_OnClicked"></Button>
+    
+  </StackLayout>
+</ContentPage>

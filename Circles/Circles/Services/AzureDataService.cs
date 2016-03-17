@@ -84,6 +84,22 @@ namespace Circles.Services
             }
         }
 
+        public async Task UpdateAsync<T>(T pEntity)
+        {
+            try
+            {
+                //get the local table
+                var table = Table<T>();
+
+                //save data
+                await table.UpdateAsync(pEntity);
+            }
+            catch (Exception ex)
+            {
+                ReportError(ex);
+            }
+        }
+
         public async Task Sync<T>()
         {
             try

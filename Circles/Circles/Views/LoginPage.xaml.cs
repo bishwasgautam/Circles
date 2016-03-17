@@ -25,23 +25,14 @@ namespace Circles.Views
         
         private async void LoginClicked(object sender, EventArgs e)
         {
-            //var username = UserNameEntry.Text;
-            //var password = PasswordEntry.Text;
-
-            User user = null;
-
-            //if (ViewModel.IsValidUser(username, password))
-            //{
-            //   
-            //}
-            user = ViewModel.GetCurrentUser("admin");
+            
 
             if (App.Authenticator != null)
             {
                 App.Authenticated =  await App.Authenticator.Authenticate();
             }
-            
 
+            var user = ViewModel.GetCurrentUser("admin");
             // Set syncItems to true in order to synchronize the data on startup when running in offline mode
             if (App.Authenticated && user != null)
                 await Navigation.PushAsync(new WelcomePage(user));

@@ -46,6 +46,9 @@ namespace Circles.Views
             //delete
             _viewModel.DeleteItem();
 
+            //show confirmation
+            await this.DisplayAlert("", "Deleted!", "");
+
             //close view
             Exit();
         }

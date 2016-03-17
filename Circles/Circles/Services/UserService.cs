@@ -10,9 +10,9 @@ namespace Circles.Services
     {
         private IMobileServiceSyncTable<User> _userTable;
         private readonly IDataService _dataService;
-        public UserService()
+        public UserService(IDataService ds)
         {
-            _dataService = ServiceLocator.DataService;
+            _dataService = ds;
             _userTable = _dataService.Table<User>();
         }
         
@@ -84,9 +84,10 @@ namespace Circles.Services
             throw new NotImplementedException();
         }
 
-        public bool UpdateUser(User user)
+        bool IUserService.UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            _dataService.UpdateAsync<User>(user);
+            return true;
         }
 
         public bool RemoveUser(User user)

@@ -47,7 +47,7 @@ namespace Circles.Views
         {
             App.Authenticator.Logout();
 
-            await DependencyService.Get<IMobileServiceClient>().LogoutAsync();
+            await MobileServiceClients.AzureMobileService.LogoutAsync();
 
             await Navigation.PushAsync(new LoginPage());
         }

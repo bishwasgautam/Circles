@@ -10,6 +10,9 @@
 
     <!--TODO Custom list view with edit and remove-->
     <ListView x:Name ="AddressBookListView" HasUnevenRows="True">
+      <ListView.ItemTemplate>
+        
+      
       <DataTemplate>
         <ViewCell>
                         <ViewCell.View>
@@ -17,13 +20,13 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
+                                  <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                              <StackLayout Grid.Column ="0" Orientation="Vertical" Padding="10" BackgroundColor="Gray">
-                                <Label Text="{Binding AddressName}"></Label>
-                              </StackLayout>
-                              <StackLayout Grid.Column="1">
-                                <Button x:Name="AddressEdit" CommandParameter="{Binding Id}" Text="Edit" Clicked="AddressEdit_OnClicked" />
-                              </StackLayout>
+                              <!--<StackLayout Orientation="Vertical" Padding="10" BackgroundColor="Gray">-->
+                                <Label  Grid.Column ="0" Text="{Binding AddressName}" HorizontalOptions="StartAndExpand"></Label>
+                               <Button  Grid.Column ="1" x:Name="AddressDetails" CommandParameter="{Binding Id}"  HorizontalOptions="Start" Text="Details" Clicked="AddressDetails_OnClicked" /> 
+                                <Button  Grid.Column ="2" x:Name="AddressEdit" CommandParameter="{Binding Id}"  HorizontalOptions="End" Text="Edit" Clicked="AddressEdit_OnClicked" />
+                              <!--</StackLayout>-->
                                
                             </Grid>
                         </ViewCell.View>
@@ -42,7 +45,7 @@
       </DataTemplate>
       <!--<ListViewCachingStrategy Values ></ListViewCachingStrategy>-->
 
-
+      </ListView.ItemTemplate>
 
     </ListView>
     

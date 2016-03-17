@@ -4,20 +4,20 @@
              x:Class="Circles.Views.AddressBookEditPage"
              Title="Edit Address Book">
   <StackLayout BindingContext="{Binding CurrentEditItem}">
-    <Label Text="Name" VerticalOptions="Center" HorizontalOptions="Center" />
-    <Entry x:Name="AddressName" BindingContext="{Binding AddressName}" HorizontalOptions="Center" BackgroundColor="White" PlaceholderColor="Gray" Placeholder="Username or Email"  TextColor="Navy" Keyboard="Default"/>
+    <Label Text="Contact Name"  HorizontalOptions="Start" />
+    <Entry x:Name="AddressName" Text="{Binding AddressName}" HorizontalOptions="FillAndExpand" BackgroundColor="White"   TextColor="Navy" Keyboard="Default"/>
 
-    <Label Text="Street" VerticalOptions="Center" HorizontalOptions="Center" />
-    <Entry x:Name="StreetEntry"  BindingContext="{Binding Address.StreetName}" HorizontalOptions="Center" BackgroundColor="White" Placeholder="Street" PlaceholderColor="Gray" TextColor="Navy" Keyboard="Default"/>
+    <Label Text="Street" HorizontalOptions="Start" />
+    <Entry x:Name="StreetEntry"  Text="{Binding Address.StreetName}"  HorizontalOptions="FillAndExpand" BackgroundColor="White"  PlaceholderColor="Gray" TextColor="Navy" Keyboard="Default"/>
 
-    <Label Text="Suite" VerticalOptions="Center" HorizontalOptions="Center" />
-    <Entry x:Name="SuiteEntry"  BindingContext="{Binding Address.Suite}" HorizontalOptions="Center" BackgroundColor="White" Placeholder="Suite" PlaceholderColor="Gray" TextColor="Navy" Keyboard="Default"/>
+    <Label Text="Suite" HorizontalOptions="Start" />
+    <Entry x:Name="SuiteEntry"  Text="{Binding Address.Suite}"  HorizontalOptions="FillAndExpand" BackgroundColor="White" PlaceholderColor="Gray" TextColor="Navy" Keyboard="Default"/>
 
-    <Label Text="City" VerticalOptions="Center" HorizontalOptions="Center" />
-    <Entry x:Name="CityEntry"  BindingContext="{Binding Address.City}" HorizontalOptions="Center" BackgroundColor="White" Placeholder="City" PlaceholderColor="Gray" TextColor="Navy" Keyboard="Default"/>
+    <Label Text="City" HorizontalOptions="Start" />
+    <Entry x:Name="CityEntry"  Text="{Binding Address.City}" HorizontalOptions="FillAndExpand" BackgroundColor="White"  PlaceholderColor="Gray" TextColor="Navy" Keyboard="Default"/>
 
-    <Label Text="ZipCode" VerticalOptions="Center" HorizontalOptions="Center" />
-    <Entry x:Name="ZipCode" BindingContext="{Binding Address.ZipCode}" HorizontalOptions="Center" BackgroundColor="White" Placeholder="ZipCode" PlaceholderColor="Gray" TextColor="Navy" Keyboard="Default"/>
+    <Label Text="ZipCode" HorizontalOptions="Start" />
+    <Entry x:Name="ZipCode" Text="{Binding Address.ZipCode}"  HorizontalOptions="FillAndExpand" BackgroundColor="White"  PlaceholderColor="Gray" TextColor="Navy" Keyboard="Default"/>
 
 
     <Button x:Name="btnSave" Text="Save" Clicked="BtnSave_OnClicked"></Button>

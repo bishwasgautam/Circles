@@ -59,6 +59,9 @@
     <Compile Include="Views\AddressBookCreatePage.xaml.cs">
       <DependentUpon>AddressBookCreatePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddressBookDetailsPage.xaml.cs">
+      <DependentUpon>AddressBookDetailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddressBookEditPage.xaml.cs">
       <DependentUpon>AddressBookEditPage.xaml</DependentUpon>
     </Compile>
@@ -152,6 +155,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\WelcomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AddressBookDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

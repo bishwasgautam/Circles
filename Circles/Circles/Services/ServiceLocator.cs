@@ -7,12 +7,15 @@ using Microsoft.WindowsAzure.MobileServices.Sync;
 
 namespace Circles.Services
 {
-    public class ServiceLocator
+    public static class ServiceLocator
     {
-        public static IDummyDataService DummyDataService => new DummyDataService();
-        public static IUserService UserService => new UserService();
-        public static IAuthenticate DefaultAuthenticator => new AzureUserAuthentication();
-        public static IDataService DataService => new AzureDataService();
+        public static IDataService DataService = new AzureDataService();
+        public static IDummyDataService DummyDataService = new DummyDataService(DataService);
+        public static IUserService UserService = new UserService(DataService);
+
+        public static IAuthenticate DefaultAuthenticator = new AzureUserAuthentication();
+
+
     }
 
     public interface IDummyDataService
@@ -24,9 +27,9 @@ namespace Circles.Services
     public class DummyDataService : IDummyDataService
     {
         private readonly IDataService _dataService;
-        public DummyDataService()
+        public DummyDataService(IDataService ds)
         {
-            _dataService = ServiceLocator.DataService;
+            _dataService = ds;
         }
 
         public async Task LoadDummyData()
@@ -139,6 +142,7 @@ namespace Circles.Services
         Task Sync<T>();
 
         IMobileServiceSyncTable<T> Table<T>();
+        Task UpdateAsync<T>(T user);
     }
 
     public interface IAuthService : IAuthenticate

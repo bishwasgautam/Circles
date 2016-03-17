@@ -7,9 +7,9 @@
   
   <!--<Label Text="Please login to get started!" VerticalOptions="Start" HorizontalOptions="Start" TextColor="Navy" FontAttributes="Bold"/>-->
 
-  <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center"  WidthRequest="400">
+  <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
 
-    <Image Source="dunnlogo.png" HorizontalOptions="Center" VerticalOptions="Start"  WidthRequest="200"/>
+    <Image Source="dunnlogo.png" HorizontalOptions="Center" VerticalOptions="Center"  HeightRequest="200" Aspect="AspectFit"/>
     
     <!--<Entry x:Name="UserNameEntry" HorizontalOptions="Center" BackgroundColor="White" PlaceholderColor="Gray" Placeholder="Username or Email"  TextColor="Navy" Keyboard="Email"/>-->
     <!--<Entry x:Name="PasswordEntry" IsPassword="True" HorizontalOptions="Center" BackgroundColor="White" Placeholder="Password" PlaceholderColor="Gray" TextColor="Navy" Keyboard="Default"/>-->

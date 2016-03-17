@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using Circles.Entities;
@@ -9,10 +11,12 @@ namespace Circles.ViewModels
     public class AddressBookViewModel : BaseViewModel
     {
         private IUserService _dataService;
-        private IEnumerable<AddressBook> _allAddressBook;
-        public IEnumerable<AddressBook> AllAddressBook {
+
+        private ObservableCollection<AddressBook> _allAddressBook;
+        public ObservableCollection<AddressBook> AllAddressBook {
             get
             {
+                RaisePropertyChanged(() => AllAddressBook);
                 return _allAddressBook;
             }
             set
@@ -68,16 +72,19 @@ namespace Circles.ViewModels
             }
         }
 
-
+        public void Refresh()
+        {
+            PopulateAddressBook();
+        }
 
         private void PopulateAddressBook()
         {
-            AllAddressBook = ViewModelLocator.WelcomePageViewModel.GetAddressBook(CurrentUserId);
+            AllAddressBook = new ObservableCollection<AddressBook>(ViewModelLocator.WelcomePageViewModel.GetAddressBook(CurrentUserId));
         }
         
         public AddressBook GetItem(string id)
         {
-            return AllAddressBook.FirstOrDefault(x => string.Equals(x.AddressId, id));
+            return AllAddressBook.FirstOrDefault(x => string.Equals(x.Id, id));
         }
 
         public void UpdateItem()
@@ -90,6 +97,8 @@ namespace Circles.ViewModels
                 itemInCollection.AddressName = CurrentEditItem.AddressName;
                 itemInCollection.Address = CurrentEditItem.Address;
             }
+
+            AllAddressBook = AllAddressBook;
 
             SaveChanges();
 
