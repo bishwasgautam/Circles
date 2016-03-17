@@ -13,7 +13,8 @@ using Circles.Services;
 
 namespace Circles.Droid
 {
-    [Activity(Label = "Circles", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Theme = "@android:style/Theme.Material.Light",
+        Label = "Circles", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity, IAuthenticate
     {
         protected override void OnCreate(Bundle bundle)

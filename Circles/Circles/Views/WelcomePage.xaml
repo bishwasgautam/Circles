@@ -4,10 +4,17 @@
              x:Class="Circles.Views.WelcomePage"
              Title="Welcome to Circles!!">
   <StackLayout>
-    
-   
+    <StackLayout.Padding>
+      <OnPlatform x:TypeArguments="Thickness">
+        <OnPlatform.iOS> 10, 10, 10, 10 </OnPlatform.iOS>
+        <OnPlatform.Android> 8, 8, 8, 8 </OnPlatform.Android>
+        <OnPlatform.WinPhone> 10, 10, 10, 10 </OnPlatform.WinPhone>
+      </OnPlatform>
+    </StackLayout.Padding> 
+    <!--- See more at: http://motzcod.es/post/125302147562/5-tips-to-properly-style-xamarinforms-apps#sthash.jRA2yYVa.dpuf-->
 
-      <Label x:Name="WelcomeTextLbl" Text="Hello, Welcome To Circles!" TextColor="Red" VerticalOptions="Center" HorizontalOptions="Center" />    
+
+    <Label x:Name="WelcomeTextLbl" Text="Hello, Welcome To Circles!" TextColor="Red" VerticalOptions="Center" HorizontalOptions="Center" />    
       
       <Button x:Name="ShowAddressBook" Text="My AddressBook" HorizontalOptions="Center" VerticalOptions="Center" Clicked="ShowAddressBook_OnClicked"></Button>
 

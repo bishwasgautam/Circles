@@ -121,7 +121,7 @@ namespace Circles.ViewModels
         public void SaveCurrentAddItem()
         {
             AllAddressBook.ToList().Add(CurrentAddItem);
-
+            AllAddressBook = AllAddressBook;
             SaveChanges();
         }
 

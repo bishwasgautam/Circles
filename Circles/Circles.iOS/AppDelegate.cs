@@ -31,6 +31,14 @@ namespace Circles.iOS
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
             SQLitePCL.CurrentPlatform.Init();
 
+            //basic style bar and light styling
+            UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(43, 132, 211);
+            //bar background 
+            UINavigationBar.Appearance.TintColor = UIColor.White;
+            //Tint color of button items 
+            UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes() { Font = UIFont.FromName("HelveticaNeue-Light", (nfloat)20f), TextColor = UIColor.White });
+            //See more at: http://motzcod.es/post/125302147562/5-tips-to-properly-style-xamarinforms-apps#sthash.jRA2yYVa.dpuf
+
             //Let Xamarin.Forms handle Authentication
             App.Init((IAuthenticate)this); //Otherwise pass own Authenticator App.Init(IAuthenticator iOSAuth);
             //ref https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-forms-get-started-users/
