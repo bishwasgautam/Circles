@@ -27,7 +27,7 @@ namespace Circles.ViewModels
         }
 
        
-       private string _currentUserId;
+        private string _currentUserId;
         public string CurrentUserId {
             get { return _currentUserId; }
             set

@@ -12,7 +12,7 @@ namespace Circles.Services
         public static IDummyDataService DummyDataService => new DummyDataService();
         public static IUserService UserService => new UserService();
         public static IAuthenticate DefaultAuthenticator => new AzureUserAuthentication();
-        public static IDataService DataService = new AzureDataService();
+        public static IDataService DataService => new AzureDataService();
     }
 
     public interface IDummyDataService
