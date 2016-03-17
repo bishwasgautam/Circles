@@ -6,6 +6,7 @@ using Foundation;
 using UIKit;
 using Microsoft.WindowsAzure.MobileServices;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using Circles.Services;
 
 namespace Circles.iOS
@@ -43,6 +44,7 @@ namespace Circles.iOS
             App.Init((IAuthenticate)this); //Otherwise pass own Authenticator App.Init(IAuthenticator iOSAuth);
             //ref https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-forms-get-started-users/
 
+            
             LoadApplication(new App());
             
            

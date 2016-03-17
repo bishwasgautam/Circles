@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Microsoft.WindowsAzure.MobileServices;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using Android.OS;
 using Android.Webkit;
 using Circles.Services;
@@ -28,8 +29,9 @@ namespace Circles.Droid
 
             //Let Xamarin.Forms handle Authentication
             App.Init((IAuthenticate)this); //Otherwise pass own Authenticator App.Init(IAuthenticate droidAuth);
-            //ref https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-forms-get-started-users/
-            
+                                           //ref https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-xamarin-forms-get-started-users/
+
+            UserDialogs.Init(this);
 
             LoadApplication(new App());
         }

@@ -110,7 +110,7 @@ namespace Circles.ViewModels
         public void DeleteItem()
         {
             if(CurrentEditItem != null)
-            AllAddressBook.ToList().Remove(CurrentEditItem);
+            AllAddressBook.Remove(CurrentEditItem);
 
             CurrentEditItem = null;
 
@@ -120,7 +120,7 @@ namespace Circles.ViewModels
 
         public void SaveCurrentAddItem()
         {
-            AllAddressBook.ToList().Add(CurrentAddItem);
+            AllAddressBook.Add(CurrentAddItem);
             AllAddressBook = AllAddressBook;
             SaveChanges();
         }

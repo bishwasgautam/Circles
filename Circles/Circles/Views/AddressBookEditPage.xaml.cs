@@ -1,4 +1,5 @@
 ﻿using System;
+using Acr.UserDialogs;
 using Circles.Entities;
 using Circles.ViewModels;
 using Xamarin.Forms;
@@ -47,7 +48,7 @@ namespace Circles.Views
             _viewModel.DeleteItem();
 
             //show confirmation
-            await this.DisplayAlert("", "Deleted!", "");
+            Acr.UserDialogs.UserDialogs.Instance.Toast(new ToastConfig(ToastEvent.Success, "Deleted"));
 
             //close view
             Exit();
