@@ -8,11 +8,13 @@ namespace Circles.Views
 {
     public partial class AddressBookPage : ContentPage
     {
-        public AddressBookPage(string userId, IEnumerable<AddressBook> addressbook = null)
+        public AddressBookPage(string userId)
         {
             InitializeComponent();
+
             var viewModel = ViewModelLocator.AddressBookViewModel;
             viewModel.CurrentUserId = userId;
+            AddressBookListView.ItemsSource = viewModel.AllAddressBook;
             BindingContext = viewModel;
         }
         

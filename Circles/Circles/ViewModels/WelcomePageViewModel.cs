@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Circles.Entities;
 using Circles.Services;
@@ -22,18 +23,16 @@ namespace Circles.ViewModels
             set
             {
                 _currentUser = value;
-                RaisePropertyChanged();
+                RaisePropertyChanged(() => CurrentUser);
             }
         }
 
-        private ObservableCollection<AddressBook> _addressBook;
         
-
-        public ObservableCollection<AddressBook> AddressBook{
-            get { return _addressBook;}
+        public IEnumerable<AddressBook> AddressBook{
+            get { return CurrentUser.AddressBook;}
             set {
-                if (value != _addressBook)
-                    _addressBook = value;
+                if (value != CurrentUser.AddressBook)
+                    CurrentUser.AddressBook = value;
                 RaisePropertyChanged(() => AddressBook); }
         }
 
@@ -59,6 +58,11 @@ namespace Circles.ViewModels
         {
         }
 
+        internal IEnumerable<AddressBook> GetAddressBook(string Id)
+        {
+            return string.Equals(CurrentUser.Id, Id, StringComparison.CurrentCulture) ? AddressBook.ToList() : new List<AddressBook>();
+        }
+
         //private async Task<ObservableCollection<AddressBook>> LoadAddressBook()
         //{
         //    ObservableCollection<AddressBook> theCollection;
@@ -78,6 +82,6 @@ namespace Circles.ViewModels
         //    return theCollection;
         //}
 
-       
+
     }
 }

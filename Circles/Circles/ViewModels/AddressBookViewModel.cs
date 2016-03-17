@@ -10,30 +10,24 @@ namespace Circles.ViewModels
     {
         private IUserService _dataService;
         private IEnumerable<AddressBook> _allAddressBook;
-        private IEnumerable<AddressBook> AllAddressBook {
+        public IEnumerable<AddressBook> AllAddressBook {
             get
             {
-                RaisePropertyChanged("AllAddressBook");
                 return _allAddressBook;
             }
             set
             {
                 _allAddressBook = value;
-                RaisePropertyChanged("AllAddressBook");
+                RaisePropertyChanged(() => AllAddressBook);
             }
         }
-
-      
-
-
         public AddressBookViewModel()
         {
             _dataService = ServiceLocator.UserService;
         }
 
+       
        private string _currentUserId;
-        
-
         public string CurrentUserId {
             get { return _currentUserId; }
             set
@@ -52,7 +46,7 @@ namespace Circles.ViewModels
             set
             {
                 _currentEditItem = value;
-                RaisePropertyChanged();
+                RaisePropertyChanged(() => CurrentEditItem);
             }
         }
 
@@ -70,7 +64,7 @@ namespace Circles.ViewModels
             set
             {
                 _currentAddItem = value;
-                RaisePropertyChanged();
+                RaisePropertyChanged(() => CurrentAddItem);
             }
         }
 
@@ -78,7 +72,7 @@ namespace Circles.ViewModels
 
         private void PopulateAddressBook()
         {
-            AllAddressBook = ViewModelLocator.WelcomePageViewModel.GetAddressBook();
+            AllAddressBook = ViewModelLocator.WelcomePageViewModel.GetAddressBook(CurrentUserId);
         }
         
         public AddressBook GetItem(string id)
@@ -128,5 +122,7 @@ namespace Circles.ViewModels
             currentUser.AddressBook = AllAddressBook;
             _dataService.UpdateUser(currentUser);
         }
+
+      
     }
 }

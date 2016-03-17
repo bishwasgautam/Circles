@@ -9,9 +9,9 @@
 
       <Label x:Name="WelcomeTextLbl" Text="Hello, Welcome To Circles!" TextColor="Red" VerticalOptions="Center" HorizontalOptions="Center" />    
       
-      <Button x:Name="ShowAddressBook" Clicked="ShowAddressBook_OnClicked"></Button>
+      <Button x:Name="ShowAddressBook" Text="My AddressBook" HorizontalOptions="Center" VerticalOptions="Center" Clicked="ShowAddressBook_OnClicked"></Button>
 
-      <Button x:Name="LogOut" Clicked="LogOut_OnClicked" BackgroundColor="Yellow" TextColor="Black"></Button>
+      <Button x:Name="LogOut" Clicked="LogOut_OnClicked" Text="Logout" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Yellow" TextColor="Black"></Button>
       
     
    

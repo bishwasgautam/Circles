@@ -37,9 +37,9 @@ namespace Circles.Views
         private async void ShowAddressBook_OnClicked(object sender, EventArgs e)
         {
             //TODO Custom list view with edit and remove
-            var addresses = viewModel.GetAddressBook();
+            var addresses = viewModel.AddressBook.ToList();
             if(addresses != null && addresses.Any())
-            await Navigation.PushAsync(new AddressBookPage(viewModel.CurrentUser.Id, addresses));
+            await Navigation.PushAsync(new AddressBookPage(viewModel.CurrentUser.Id));
             
         }
 

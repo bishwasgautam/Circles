@@ -82,6 +82,9 @@ namespace Circles.Services
 
             }
 
+            
+                await _dataService.Sync<User>();
+
 
         }
 
@@ -133,10 +136,9 @@ namespace Circles.Services
         Task<System.Collections.ObjectModel.ObservableCollection<T>> GetAll<T>();
         Task Pull<T>();
         Task Save<T>(T pEntity);
+        Task Sync<T>();
+
         IMobileServiceSyncTable<T> Table<T>();
-
-
-
     }
 
     public interface IAuthService : IAuthenticate

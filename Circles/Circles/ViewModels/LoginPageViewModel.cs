@@ -17,7 +17,7 @@ namespace Circles.ViewModels
             set
             {
                 _currentUser = value;
-                RaisePropertyChanged();
+                RaisePropertyChanged(() => CurrentUser);
             }
         }
 

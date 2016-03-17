@@ -76,8 +76,7 @@ namespace Circles.Services
                 //save data
                 await table.InsertAsync(pEntity);
 
-                if (App.Authenticated)
-                    await Sync<T>();
+              
             }
             catch (Exception ex)
             {
@@ -85,18 +84,27 @@ namespace Circles.Services
             }
         }
 
-        private async Task Sync<T>()
+        public async Task Sync<T>()
         {
-            //get the local table
-            var table = Table<T>();
-            ////pull down all latest changes
-            var key = string.Concat("all", typeof(T).Name, "s");
+            try
+            {
+                //get the local table
+                var table = Table<T>();
+                ////pull down all latest changes
+                var key = string.Concat("all", typeof (T).Name, "s");
 
-            await table.PullAsync(key, table.CreateQuery());
+                await table.PullAsync(key, table.CreateQuery());
 
-            //save new records to cloud
-            if (App.Authenticated)
-                await _mobileService.SyncContext.PushAsync();
+                //save new records to cloud
+                if (App.Authenticated)
+                    await _mobileService.SyncContext.PushAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                ReportError(ex);
+            }
+
         }
 
         public IMobileServiceSyncTable<T> Table<T>()
