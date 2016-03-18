@@ -37,11 +37,11 @@ namespace Circles.ViewModels
         }
 
        
-        public WelcomePageViewModel(User user)
-        {
-            CurrentUser = user;
-            _userService = ServiceLocator.UserService;
-        }
+        //public WelcomePageViewModel(User user)
+        //{
+        //    CurrentUser = user;
+        //    _userService = ServiceLocator.UserService;
+        //}
 
         public IEnumerable<AddressBook> GetAddressBook()
         {

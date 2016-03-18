@@ -7,8 +7,8 @@ namespace Circles.ViewModels
 {
     public static class ViewModelLocator
     {
-        public static AddressBookViewModel AddressBookViewModel = new AddressBookViewModel();
-        public static WelcomePageViewModel WelcomePageViewModel = new WelcomePageViewModel();
-        public static LoginPageViewModel LoginPageViewModel = new LoginPageViewModel();
+        public static AddressBookViewModel AddressBookViewModel = App.Container.Resolve<AddressBookViewModel>();
+        public static WelcomePageViewModel WelcomePageViewModel = App.Container.Resolve<WelcomePageViewModel>();
+        public static LoginPageViewModel LoginPageViewModel = App.Container.Resolve<LoginPageViewModel>();
     }
 }

@@ -9,13 +9,10 @@ namespace Circles.Services
 {
     public static class ServiceLocator
     {
-        public static IDataService DataService = new AzureDataService();
-        public static IDummyDataService DummyDataService = new DummyDataService(DataService);
-        public static IUserService UserService = new UserService(DataService);
-
-        public static IAuthenticate DefaultAuthenticator = new AzureUserAuthentication();
-
-
+        public static IDataService DataService = App.Container.Resolve<IDataService>();
+        public static IDummyDataService DummyDataService = App.Container.Resolve<IDummyDataService>();
+        public static IUserService UserService = App.Container.Resolve<IUserService>();
+        public static IAuthenticate DefaultAuthenticator = App.Container.Resolve<IAuthenticate>();
     }
 
     public interface IDummyDataService

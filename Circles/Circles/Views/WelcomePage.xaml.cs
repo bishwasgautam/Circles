@@ -26,7 +26,7 @@ namespace Circles.Views
 
         public static async void LoadData()
         {
-            await ServiceLocator.DummyDataService.LoadDummyData();
+            await ((IDummyDataService)App.Container.Resolve(typeof(IDummyDataService))).LoadDummyData();
         }
 
         private void PopulatePageData(User user)

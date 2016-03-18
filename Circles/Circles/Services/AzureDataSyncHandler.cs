@@ -9,7 +9,7 @@ namespace Circles.Services
     {
         public Task<JObject> ExecuteTableOperationAsync(IMobileServiceTableOperation operation)
         {
-            var message = $"Executing operation{operation.Kind} for table {operation.Table.TableName}";
+            var message = $"Executing operation {operation.Kind} for table {operation.Table.TableName}";
             Debug.WriteLine(message);
             return operation.ExecuteAsync();
         }
@@ -21,7 +21,8 @@ namespace Circles.Services
           
             foreach (var error in result.Errors)
             {
-                message = $"Push error  : {error.Status}";
+                message = $"Push error  : {error.Status} on table {error.TableName}";
+                
                 Debug.WriteLine(message);
             }
 

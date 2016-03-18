@@ -47,9 +47,6 @@ namespace Circles.iOS
             
             LoadApplication(new App());
             
-           
-
-           
 
             return base.FinishedLaunching(app, options);
         }

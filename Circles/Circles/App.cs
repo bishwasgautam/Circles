@@ -1,61 +1,24 @@
 ﻿using System.Diagnostics;
 using Circles.Services;
+using Circles.ViewModels;
+using Circles.Views;
+using SQLitePCL;
+using TinyIoC;
 using Xamarin.Forms;
 
 namespace Circles
 {
-    public class App : Application
+
+    public partial class App : Application
     {
         public App()
         {
-            // The root page of your application
-            //MainPage = new ContentPage
-            //{
-            //    Content = new StackLayout
-            //    {
-            //        VerticalOptions = LayoutOptions.Center,
-            //        Children = {
-            //            new Label {
-            //                XAlign = TextAlignment.Center,
-            //                Text = "Welcome to Xamarin Forms!"
-            //            }
-            //        }
-            //    }
-            //};
-            
-
-            MainPage = new NavigationPage(new Views.LoginPage());
-            
-
+            //Start
+            MainPage = new NavigationPage(new LoginPage());
         }
 
-        public static IAuthenticate Authenticator { get; private set; }
-        private static bool _authenticated;
-        public static bool Authenticated {
-            get { return _authenticated;}
-            set {
-                _authenticated = value;
-                if (_authenticated)
-                {
-                    //display dialog
-                    Debug.WriteLine($"*************Successfully Authenticated********************");
-                   
-                }
-            }
-        }
 
-        public static void Init(IAuthenticate authenticator)
-        {
-            if (authenticator != null)
-            {
-                Authenticator = authenticator;
-            }
-            else
-            {
-                Authenticator = ServiceLocator.DefaultAuthenticator;
-            }
-            
-        }
+      
         
         protected override void OnStart()
         {
@@ -71,5 +34,60 @@ namespace Circles
         {
             // Handle when your app resumes
         }
+    }
+
+    //Everything related to app startup config
+    public partial class App
+    {
+        #region Dependency Injection
+        public static TinyIoCContainer Container { get; set; }
+        
+        public static void ConfigureIOC()
+        {
+            //IOC
+            Container = TinyIoCContainer.Current;
+            
+            Container.Register<IDataService, AzureDataService>();
+            Container.Register<IAuthService, AzureUserAuthentication>();
+            Container.Register<IUserService, UserService>();
+            Container.Register<IAuthenticate, AzureUserAuthentication>();
+            Container.Register<IDummyDataService, DummyDataService>();
+        }
+        #endregion
+
+        #region Authentication
+
+        public static IAuthenticate Authenticator { get; private set; }
+        private static bool _authenticated;
+        public static bool Authenticated
+        {
+            get { return _authenticated; }
+            set
+            {
+                _authenticated = value;
+                if (_authenticated)
+                {
+                    //display dialog
+                    Debug.WriteLine($"*************Successfully Authenticated********************");
+
+                }
+            }
+        }
+
+        public static void Init(IAuthenticate authenticator)
+        {
+            if (authenticator != null)
+            {
+                Authenticator = authenticator;
+            }
+            else
+            {
+                Authenticator = ServiceLocator.DefaultAuthenticator;
+            }
+
+        }
+
+        #endregion 
+
     }
 }
