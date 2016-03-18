@@ -27,6 +27,9 @@ namespace Circles.Views
            
             if (CurrentItem != null && !string.IsNullOrEmpty(CurrentItem.Id))
             {
+
+                Exit();
+
                 await Navigation.PushModalAsync(new AddressBookEditPage(CurrentItem.Id));
             }
         }

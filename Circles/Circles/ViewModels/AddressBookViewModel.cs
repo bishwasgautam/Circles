@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using Circles.Entities;
 using Circles.Services;
+using Xamarin.Forms;
 
 namespace Circles.ViewModels
 {
@@ -13,7 +14,8 @@ namespace Circles.ViewModels
         private IUserService _dataService;
 
         private ObservableCollection<AddressBook> _allAddressBook;
-        public ObservableCollection<AddressBook> AllAddressBook {
+        public ObservableCollection<AddressBook> AllAddressBook
+        {
             get
             {
                 RaisePropertyChanged(() => AllAddressBook);
@@ -25,14 +27,47 @@ namespace Circles.ViewModels
                 RaisePropertyChanged(() => AllAddressBook);
             }
         }
+
+        private bool _isListRefreshing;
+
+        public bool IsListRefreshing
+        {
+            get { return _isListRefreshing; }
+            set { if (_isListRefreshing == value) return;
+                _isListRefreshing = value;
+                RaisePropertyChanged(() => IsListRefreshing);
+            }
+        }
+
+        private Command loadTweetsCommand;
+
+        public Command LoadAddressBook
+        {
+            get { return loadTweetsCommand ??
+                    (loadTweetsCommand = new Command(ExecuteLoadAddressBooksCommand, () => { return !IsListRefreshing; })); }
+        }
+        private async void ExecuteLoadAddressBooksCommand()
+        {
+            if (IsListRefreshing) return;
+            IsListRefreshing = true;
+            LoadAddressBook.ChangeCanExecute();
+
+            AllAddressBook.Add(ServiceLocator.DummyDataService.GetRandomAddressBook());
+            AllAddressBook.Move(AllAddressBook.Count-1, 0);
+
+            IsListRefreshing = false;
+            LoadAddressBook.ChangeCanExecute();
+        } 
+
         public AddressBookViewModel()
         {
             _dataService = ServiceLocator.UserService;
         }
 
-       
+
         private string _currentUserId;
-        public string CurrentUserId {
+        public string CurrentUserId
+        {
             get { return _currentUserId; }
             set
             {
@@ -42,7 +77,8 @@ namespace Circles.ViewModels
         }
 
         private AddressBook _currentEditItem;
-        public AddressBook CurrentEditItem {
+        public AddressBook CurrentEditItem
+        {
             get
             {
                 return _currentEditItem;
@@ -61,7 +97,7 @@ namespace Circles.ViewModels
             {
                 if (_currentAddItem == null)
                 {
-                    _currentAddItem = new AddressBook() {Address = new Address()};
+                    _currentAddItem = new AddressBook() { Address = new Address() };
                 }
                 return _currentAddItem;
             }
@@ -81,7 +117,7 @@ namespace Circles.ViewModels
         {
             AllAddressBook = new ObservableCollection<AddressBook>(ViewModelLocator.WelcomePageViewModel.GetAddressBook(CurrentUserId));
         }
-        
+
         public AddressBook GetItem(string id)
         {
             return AllAddressBook.FirstOrDefault(x => string.Equals(x.Id, id));
@@ -89,8 +125,8 @@ namespace Circles.ViewModels
 
         public void UpdateItem()
         {
-            var itemInCollection = AllAddressBook.First(x=> string.Equals(x.Id, CurrentEditItem.Id));
-
+            var itemInCollection = AllAddressBook.First(x => string.Equals(x.Id, CurrentEditItem.Id));
+            var index = AllAddressBook.IndexOf(itemInCollection);
             //todo AutoMap
             if (itemInCollection != null)
             {
@@ -98,30 +134,32 @@ namespace Circles.ViewModels
                 itemInCollection.Address = CurrentEditItem.Address;
             }
 
-            AllAddressBook = AllAddressBook;
+            AllAddressBook[index] = itemInCollection;
+            
 
             SaveChanges();
 
 
         }
 
-     
+
 
         public void DeleteItem()
         {
-            if(CurrentEditItem != null)
-            AllAddressBook.Remove(CurrentEditItem);
+            if (CurrentEditItem != null)
+                AllAddressBook.Remove(CurrentEditItem);
 
             CurrentEditItem = null;
 
-          SaveChanges();
+            SaveChanges();
 
         }
 
         public void SaveCurrentAddItem()
         {
+            CurrentAddItem.Id = "newId";
             AllAddressBook.Add(CurrentAddItem);
-            AllAddressBook = AllAddressBook;
+            AllAddressBook.Move(AllAddressBook.Count -1 , 0);
             SaveChanges();
         }
 
@@ -132,6 +170,6 @@ namespace Circles.ViewModels
             _dataService.UpdateUser(currentUser);
         }
 
-      
+
     }
 }

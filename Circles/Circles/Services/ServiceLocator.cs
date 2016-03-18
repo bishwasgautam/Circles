@@ -22,10 +22,12 @@ namespace Circles.Services
     {
         Task LoadDummyData();
         User LoadDummyAdmin();
+        AddressBook GetRandomAddressBook();
     }
 
     public class DummyDataService : IDummyDataService
     {
+        private static int count = 0;
         private readonly IDataService _dataService;
         public DummyDataService(IDataService ds)
         {
@@ -114,9 +116,24 @@ namespace Circles.Services
             return user;
         }
 
+        public AddressBook GetRandomAddressBook()
+        {
+            return Builder<AddressBook>.CreateNew()
+                .With(x => x.AddressName = "Testing PTR " + ++count)
+                .With(x => x.Address = new Address()
+                {
+                    City = Faker.Address.City(),
+                    State = Faker.Address.State(),
+                    StreetName = Faker.Address.StreetName(),
+                    Country = Faker.Address.Country(),
+                    ZipCode = Faker.Address.ZipCode(),
+                    Suite = Faker.Address.BuildingNumber()
+                }).Build();
+        }
+
         public IEnumerable<AddressBook> GetDummyAddressBook(User user)
         {
-            return Builder<AddressBook>.CreateListOfSize(5).All()
+            return Builder<AddressBook>.CreateListOfSize(15).All()
                 .With(x => x.WPLHID = user.Id)
                 .With(x => x.AddressName = Faker.Name.First() + " " + Faker.Name.Last())
                 .With(x => x.Address = new Address()

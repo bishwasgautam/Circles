@@ -7,7 +7,7 @@
   
   <!--<Label Text="Please login to get started!" VerticalOptions="Start" HorizontalOptions="Start" TextColor="Navy" FontAttributes="Bold"/>-->
 
-  <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
+  <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="400">
 
     <StackLayout.Padding>
       <OnPlatform x:TypeArguments="Thickness">
@@ -19,11 +19,11 @@
     <!--- See more at: http://motzcod.es/post/125302147562/5-tips-to-properly-style-xamarinforms-apps#sthash.jRA2yYVa.dpuf-->
     
 
-    <Image Source="dunnlogo.png" HorizontalOptions="Center" VerticalOptions="Center"  HeightRequest="200" Aspect="AspectFit"/>
+    <Image Source="dunnlogo.png" HeightRequest="150" WidthRequest="225" Aspect="AspectFit"/>
     
     <!--<Entry x:Name="UserNameEntry" HorizontalOptions="Center" BackgroundColor="White" PlaceholderColor="Gray" Placeholder="Username or Email"  TextColor="Navy" Keyboard="Email"/>-->
     <!--<Entry x:Name="PasswordEntry" IsPassword="True" HorizontalOptions="Center" BackgroundColor="White" Placeholder="Password" PlaceholderColor="Gray" TextColor="Navy" Keyboard="Default"/>-->
-    <Label Text="Please login to get started!" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Navy" FontAttributes="Bold"/>
+    <!--<Label Text="Please login to get started!" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Navy" FontAttributes="Bold"/>-->
     
     <Button x:Name="LoginBtn" Clicked="LoginClicked" Text="Login" HorizontalOptions="CenterAndExpand" BackgroundColor="Teal" TextColor="White"></Button>
       <!--<Button x:Name="ForgotItBtn" Clicked="ForgotItClicked" Text="Forgot it" HorizontalOptions="CenterAndExpand" BackgroundColor="Teal" TextColor="White"></Button>-->

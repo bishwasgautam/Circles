@@ -28,6 +28,10 @@ namespace Circles.Views
             //update
             _viewModel.UpdateItem();
 
+
+            //show confirmation
+            Acr.UserDialogs.UserDialogs.Instance.Toast(new ToastConfig(ToastEvent.Success, "Updated!"));
+
             //close view
             Exit();
         }

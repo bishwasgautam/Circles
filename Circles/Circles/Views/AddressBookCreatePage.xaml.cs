@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using Circles.Entities;
 using Circles.ViewModels;
 using Xamarin.Forms;
@@ -25,6 +26,10 @@ namespace Circles.Views
         private void BtnSave_OnClicked(object sender, EventArgs e)
         {
             _viewModel.SaveCurrentAddItem();
+
+            //show confirmation
+            Acr.UserDialogs.UserDialogs.Instance.Toast(new ToastConfig(ToastEvent.Success, "Saved"));
+
             Exit();
         }
 

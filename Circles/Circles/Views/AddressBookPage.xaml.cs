@@ -26,6 +26,9 @@ namespace Circles.Views
         {
             if(viewmodel != null && viewmodel.AllAddressBook.Any())
             AddressBookListView.ItemsSource = viewmodel.AllAddressBook;
+
+            AddressBookListView.IsPullToRefreshEnabled = true;
+            
         }
 
         private async void AddAddressBook_OnClicked(object sender, EventArgs e)
@@ -36,8 +39,9 @@ namespace Circles.Views
         private async void AddressEdit_OnClicked(object sender, EventArgs e)
         {
             //get id / address
-            var btn = (Button) sender;
-            var id = btn.CommandParameter.ToString();
+            var menuItem = (MenuItem)sender;
+            var id = menuItem.CommandParameter.ToString();
+
             //edit
             if (!string.IsNullOrEmpty(id))
             {
@@ -70,8 +74,8 @@ namespace Circles.Views
         private async void AddressDetails_OnClicked(object sender, EventArgs e)
         {
             //get id / address
-            var btn = (Button)sender;
-            var id = btn.CommandParameter.ToString();
+            var menuItem = (MenuItem)sender;
+            var id = menuItem.CommandParameter.ToString();
 
             //edit
             if (!string.IsNullOrEmpty(id))
@@ -79,6 +83,7 @@ namespace Circles.Views
                 await Navigation.PushModalAsync(new AddressBookDetailsPage(id));
             }
         }
+
     }
 
   

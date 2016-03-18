@@ -15,32 +15,48 @@
     </StackLayout.Padding>
     <!--- See more at: http://motzcod.es/post/125302147562/5-tips-to-properly-style-xamarinforms-apps#sthash.jRA2yYVa.dpuf-->
     
-    <Button x:Name="AddAddressBook" Text="Add" VerticalOptions="Start" HorizontalOptions="Center" Clicked="AddAddressBook_OnClicked"/>
+    <Button x:Name="AddAddressBook" Text="Add" VerticalOptions="Start" HeightRequest ="40" HorizontalOptions="Center" Clicked="AddAddressBook_OnClicked"/>
 
 
     <!--TODO Custom list view with edit and remove-->
-    <ListView x:Name ="AddressBookListView" HasUnevenRows="True">
+    <ListView x:Name ="AddressBookListView" HasUnevenRows="True" 
+              IsPullToRefreshEnabled="True"
+              RefreshCommand="{Binding LoadAddressBook}"
+              IsRefreshing="{Binding IsListRefreshing, Mode=OneWay}" SeparatorColor="White">
+
+      
       <ListView.ItemTemplate>
         
       
       <DataTemplate>
         <ViewCell>
-                        <ViewCell.View>
-                            <Grid>
+          
+           
+          <ViewCell.ContextActions>
+            <MenuItem Clicked="AddressDetails_OnClicked" CommandParameter="{Binding Id}"
+               Text="Details"  />
+            <MenuItem Clicked="AddressEdit_OnClicked" CommandParameter="{Binding Id}"
+               Text="Edit" IsDestructive="True" />
+            <!--<MenuItem Clicked="AddressDelete_OnClicked" CommandParameter="{Binding Id}"
+               Text="Delete" IsDestructive="True" />-->
+          </ViewCell.ContextActions>
+         
+          <ViewCell.View>
+          <!--<Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                   <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                              <!--<StackLayout Orientation="Vertical" Padding="10" BackgroundColor="Gray">-->
-                                <Label  Grid.Column ="0" Text="{Binding AddressName}" HorizontalOptions="StartAndExpand"></Label>
-                               <Button  Grid.Column ="1" x:Name="AddressDetails" CommandParameter="{Binding Id}"  HorizontalOptions="Start" Text="Details" Clicked="AddressDetails_OnClicked" /> 
-                                <Button  Grid.Column ="2" x:Name="AddressEdit" CommandParameter="{Binding Id}"  HorizontalOptions="End" Text="Edit" Clicked="AddressEdit_OnClicked" />
-                              <!--</StackLayout>-->
-                               
-                            </Grid>
-                        </ViewCell.View>
-         </ViewCell>
+                                </Grid.ColumnDefinitions>-->
+          <StackLayout Orientation="Vertical"  HeightRequest="40" BackgroundColor="Teal">
+            <Label  Text="{Binding AddressName}" HorizontalOptions="CenterAndExpand" FontSize="20" TextColor="White"></Label>
+          <!--<Button  Grid.Column ="1" x:Name="AddressDetails" CommandParameter="{Binding Id}"  HorizontalOptions="Start" Text="Details" Clicked="AddressDetails_OnClicked" /> 
+                                <Button  Grid.Column ="2" x:Name="AddressEdit" CommandParameter="{Binding Id}"  HorizontalOptions="End" Text="Edit" Clicked="AddressEdit_OnClicked" />-->
+          </StackLayout>
+
+          <!--</Grid>-->
+          </ViewCell.View>
+        </ViewCell>
         <!--<ViewCell>
           <Grid BackgroundColor="White" HeightRequest="8">
             <StackLayout Orientation="Vertical" Padding="10" BackgroundColor="Gray">
